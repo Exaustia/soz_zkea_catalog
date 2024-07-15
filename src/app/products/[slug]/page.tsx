@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import type { Metadata, ResolvingMetadata } from "next";
 import BreadCumb from "@/app/components/Breadcrumb";
 import DefaultLayout from "@/app/layout/DefaultLayout";
+import { category } from "@/configs/category";
 
 type Props = {
   params: { slug: string };
@@ -20,18 +21,30 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
 }
 export default function Product({ params }: { params: { slug: string } }) {
   const product = {
-    type: "Chambre",
+    type: "beds",
     name: "La chambre à toto",
     model: "xxx_tata",
     price: 50,
   };
+
+  const path = category.find((item) => item.slug === product.type);
+  if (path === undefined) {
+    return (
+      <DefaultLayout>
+        <BreadCumb routing={[{ name: "Categories", path: "/categories" }]} current={params.slug} />
+        <div className="grid grid-cols-1 small:grid-cols-2 mt-8 gap-8 sm:grid-cols-3 xl:grid-cols-4 m-auto">
+          <p>Product not found</p>
+        </div>
+      </DefaultLayout>
+    );
+  }
 
   return (
     <DefaultLayout>
       <BreadCumb
         routing={[
           { name: "Categories", path: "/categories" },
-          { name: "Chambre", path: "/categories/rooms" },
+          { name: path.name, path: "/categories/" + path.slug },
         ]}
         current={params.slug}
       />
@@ -48,7 +61,7 @@ export default function Product({ params }: { params: { slug: string } }) {
           <p className="text-lg text-center md:text-left mt-4">Product description</p>
           <div className="mt-4 w-full">
             <button className="bg-primary text-white rounded-md bg-[#217D56] p-4 w-full max-w-96">
-              Ajouté aux favories
+              Ajouté aux favoris
             </button>
           </div>
         </div>
