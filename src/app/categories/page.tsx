@@ -7,18 +7,10 @@ import DefaultLayout from "@/app/layout/DefaultLayout";
 import CategoryCard from "../components/CategoryCard";
 import { category } from "@/configs/category";
 
-type Props = {
-  params: { slug: string };
+export const metadata: Metadata = {
+  title: "Soz - Catégories",
 };
 
-export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
-  // read route params
-  const id = params.slug;
-
-  return {
-    title: "Soz - Les categories",
-  };
-}
 export default function Category() {
   return (
     <DefaultLayout>
