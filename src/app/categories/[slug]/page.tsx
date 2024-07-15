@@ -23,7 +23,7 @@ export default function Category({ params }: { params: { slug: string } }) {
   console.log(params);
   return (
     <DefaultLayout>
-      <BreadCumb routing={[{ name: "Categorie", path: "/" }]} current={params.slug} />
+      <BreadCumb routing={[{ name: "Categories", path: "/categories" }]} current={params.slug} />
       <div className="grid grid-cols-1 small:grid-cols-2 mt-8 gap-8 sm:grid-cols-3 xl:grid-cols-4 m-auto">
         <ProductCard />
         <ProductCard />

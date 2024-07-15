@@ -21,19 +21,19 @@ const bestsellers = [
     {
         id: 3,
         name: 'Product 3',
-        slug: 'product-3',
+        slug: 'product-4',
         price: 300,
     },
     {
         id: 3,
         name: 'Product 3',
-        slug: 'product-3',
+        slug: 'product-34',
         price: 300,
     },
     {
         id: 3,
         name: 'Product 3',
-        slug: 'product-3',
+        slug: 'product-35',
         price: 300,
     },
 

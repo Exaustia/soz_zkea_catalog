@@ -153,7 +153,7 @@ const NavModal = () => {
             </button>
             {category.map((item) => (
               <li key={item.slug}>
-                <a href={"/category/" + item.slug} className="text-white gradient-hover">
+                <a href={"/categories/" + item.slug} className="text-white gradient-hover">
                   {item.name}
                 </a>
               </li>

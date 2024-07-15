@@ -8,7 +8,7 @@ export const category = [
         slug: "plants",
     },
     {
-        name: "Tables / Bureaux",
+        name: "Tables",
         slug: "tables",
     },
     {
