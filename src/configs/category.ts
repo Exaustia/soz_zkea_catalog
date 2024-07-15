@@ -16,10 +16,6 @@ export const category = [
         slug: "chairs",
     },
     {
-        name: "Electronique",
-        slug: "electronics",
-    },
-    {
         name: "Canapés",
         slug: "sofas",
     },
@@ -32,7 +28,7 @@ export const category = [
         slug: "lamps",
     },
     {
-        name: "Décorations murales",
+        name: "Déco(s) murales",
         slug: "wall-decor",
     },
     {
