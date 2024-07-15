@@ -23,9 +23,7 @@ export default function Home() {
         <h2 className="text-center font-semibold text-3xl mt-4">Les catégories</h2>
         <section className="grid grid-cols-2 small:grid-cols-3 mt-8 gap-8 sm:grid-cols-4 xl:grid-cols-5 m-auto">
           {category.slice(0, 5).map((item) => (
-            <Link href={"/category/" + item.slug} key={item.slug}>
-              <CategoryCard categoryName={item.name} />
-            </Link>
+            <CategoryCard categoryName={item.name} slug={item.slug} key={item.slug}/>
           ))}
         </section>
         <h2 className="text-center font-semibold text-3xl mt-14">Les Showrooms</h2>

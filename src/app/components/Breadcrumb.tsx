@@ -1,5 +1,31 @@
 "use client";
+
+import React, { useEffect } from "react";
+
 const BreadCumb = ({ routing, current }: { routing?: { name: string; path: string }[]; current: string }) => {
+  const [screenWidth, setScreenWidth] = React.useState<number>(0);
+  const [BreadcrumbSize, setBreadcrumbSize] = React.useState<number>(0);
+
+  useEffect(() => {
+    setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", () => {
+      setScreenWidth(window.innerWidth);
+    });
+    return () => {
+      window.removeEventListener("resize", () => {
+        setScreenWidth(window.innerWidth);
+      });
+    };
+  }, []);
+
+  useEffect(() => {
+    if (screenWidth > 768) {
+      setBreadcrumbSize(4);
+    } else {
+      setBreadcrumbSize(2);
+    }
+  }, [screenWidth]);
+
   return (
     <nav className="flex" aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -32,7 +58,7 @@ const BreadCumb = ({ routing, current }: { routing?: { name: string; path: strin
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="m1 9 4-4-4-4"
@@ -42,7 +68,7 @@ const BreadCumb = ({ routing, current }: { routing?: { name: string; path: strin
                 href={child.path}
                 className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
               >
-                {child.name}
+                {BreadcrumbSize === 4 ? child.name : routing.length >= 2 ? "..." : child.name}
               </a>
             </div>
           </li>
@@ -58,7 +84,7 @@ const BreadCumb = ({ routing, current }: { routing?: { name: string; path: strin
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
+                strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="m1 9 4-4-4-4"

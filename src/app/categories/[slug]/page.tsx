@@ -16,11 +16,10 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
   const id = params.slug;
 
   return {
-    title: "product.title",
+    title: "Soz - Produit name",
   };
 }
 export default function Category({ params }: { params: { slug: string } }) {
-  console.log(params);
   return (
     <DefaultLayout>
       <BreadCumb routing={[{ name: "Categories", path: "/categories" }]} current={params.slug} />

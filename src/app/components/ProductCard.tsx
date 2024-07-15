@@ -1,12 +1,14 @@
 "use client";
 
 import randomUuid from "@/utils/randomUuid";
+import Link from "next/link";
 import { useEffect } from "react";
 
 /* eslint-disable @next/next/no-img-element */
 const ProductCard = ({}) => {
   return (
-    <div
+    <Link
+      href="/products/product-1"
       className={
         "relative rounded-lg cursor-pointer overflow-hidden bg-blackFrame shadow-modal hover:scale-105 transition-all"
       }
@@ -21,7 +23,7 @@ const ProductCard = ({}) => {
         <span className="text-sm font-semibold">lit 1 place</span>
         <span className="text-sm font-semibold text-secondary">36$</span>
       </div>
-    </div>
+    </Link>
   );
 };
 

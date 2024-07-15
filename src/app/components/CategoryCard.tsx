@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 /* eslint-disable @next/next/no-img-element */
-const CategoryCard = ({ categoryName }: { categoryName: string }) => {
+const CategoryCard = ({ categoryName, slug }: { categoryName: string; slug: string }) => {
   useEffect(() => {
     // hover on div to scale image
     const div = document.querySelector(".card_cat_" + formatName(categoryName));
@@ -26,10 +27,8 @@ const CategoryCard = ({ categoryName }: { categoryName: string }) => {
     };
   }, [categoryName]);
 
-  console.log("img_cat_" + formatName(categoryName))
-
   return (
-    <div className={"max-w-96 relative rounded-lg cursor-pointer overflow-hidden"}>
+    <Link href={"/categories/" + slug} className={"max-w-96 relative rounded-lg cursor-pointer overflow-hidden"}>
       <img
         src="https://www.ikea.com/fr/fr/images/products/ramnefjaell-cadre-de-lit-matelasse-kilanda-beige-clair-luroey__1258175_pe927363_s5.jpg?f=xl"
         alt="placeholder"
@@ -45,7 +44,7 @@ const CategoryCard = ({ categoryName }: { categoryName: string }) => {
       >
         {categoryName}
       </span>
-    </div>
+    </Link>
   );
 };
 
