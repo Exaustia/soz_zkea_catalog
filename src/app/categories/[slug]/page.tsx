@@ -15,10 +15,10 @@ type Props = {
 
 export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
   // read route params
-  const id = params.slug;
+  const currentCategory = category.find((item) => item.slug === params.slug);
 
   return {
-    title: "Soz - Produit name",
+    title: "Soz - " + currentCategory?.name,
   };
 }
 export default function Category({ params }: { params: { slug: string } }) {
