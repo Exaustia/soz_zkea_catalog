@@ -28,7 +28,7 @@ export const category = [
         slug: "lamps",
     },
     {
-        name: "Déco(s) murales",
+        name: "Déco murales",
         slug: "wall-decor",
     },
     {

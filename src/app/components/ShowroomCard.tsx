@@ -1,14 +1,14 @@
 "use client";
 
 import randomUuid from "@/utils/randomUuid";
+import Link from "next/link";
 import { useEffect } from "react";
 
 /* eslint-disable @next/next/no-img-element */
 const ShowroomCard = ({}) => {
-
-
   return (
-    <div
+    <Link
+      href={"/showroom/"}
       className={
         "relative rounded-lg cursor-pointer overflow-hidden bg-blackFrame shadow-modal hover:scale-105 transition-all"
       }
@@ -19,7 +19,7 @@ const ShowroomCard = ({}) => {
         className={"img_cat rounded-t-lg transition-all duration-500 w-full"}
       />
       <div className="absolute top-0 left-0 right-0 bottom-0 bg-opacity-10 bg-black"></div>
-    </div>
+    </Link>
   );
 };
 
