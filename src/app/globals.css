@@ -18,16 +18,114 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background-image: url("/images/background_soz.webp");
+  /* dezoom le background image en mobile */
+  background-size: cover;
+
+  /* media query pour les mobiles */
+  @media (max-width: 640px) {
+    background-size: 100%;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes collapseFromRight {
+  0% {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-110%);
+    opacity: 1;
+  }
+}
+
+.nav-modal {
+  overflow: hidden; /* Assurez-vous que le contenu ne déborde pas pendant l'animation */
+}
+
+.nav-modal.open {
+  animation: slideInFromLeft 0.5s ease-out forwards;
+}
+
+.nav-modal.close {
+  animation: collapseFromRight 0.5s ease-out forwards;
+}
+
+@keyframes collapseFromRightSearch {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeftSearch {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+}
+
+.search-modal {
+  overflow: hidden; /* Assurez-vous que le contenu ne déborde pas pendant l'animation */
+}
+
+.search-modal.open {
+  animation: collapseFromRightSearch 0.5s ease-out forwards;
+}
+
+.search-modal.close {
+  animation: slideInFromLeftSearch 0.5s ease-out forwards;
+}
+
+@keyframes colorChange {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: bottom right;
+  }
+}
+
+.gradient-hover {
+  transition: background-position 0.2s ease-in-out;
+  transform-origin: left;
+  background: -webkit-linear-gradient(315deg, #5bacca 5%, #26e690 55%, white 60%, white 100%);
+  background-position: right center;
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+span.gradient-hover {
+}
+
+.gradient-hover:hover {
+  background-position: left center;
+  transition: background-position 0.2s ease-in-out;
 }

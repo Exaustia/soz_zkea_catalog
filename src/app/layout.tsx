@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
+import ClientLayout from "./layout";
+import Header from "./layout/Header";
+import { MenuProvider } from "./context/MenuProvider";
+import Modal from "./modal";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +19,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <MenuProvider>
+      <html lang="en">
+        <body className={inter.className + " relative"}>
+          <Header />
+          {children}
+          <Modal />
+        </body>
+      </html>
+    </MenuProvider>
   );
 }
