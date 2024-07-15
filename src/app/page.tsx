@@ -7,7 +7,7 @@ import ShowroomCard from "./components/ShowroomCard";
 import ProductCard from "./components/ProductCard";
 import Link from "next/link";
 import { category } from "@/configs/category";
-import bestsellers from "@/configs/BestSellers";
+import bestsellers from "@/configs/bestSellers";
 // default image full screen size = 1920x1080
 // const url  = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg";
 
