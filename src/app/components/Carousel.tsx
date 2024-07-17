@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 
 const imgs = [
@@ -13,19 +12,13 @@ const imgs = [
 
 /* eslint-disable @next/next/no-img-element */
 const CarouselPage = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [totalSlides, setTotalSlides] = useState(4);
-
-  const handleSetSlide = (index: any) => {
-    if (index < 0) return setCurrentSlide(totalSlides - 1);
-    if (index >= totalSlides) return setCurrentSlide(0);
-    setCurrentSlide(index);
-  };
-
   return (
     <div>
       <div className="w-full justify-center flex">
-        <Link href={"/showroom"} className="text-black text-center font-semibold p-2 rounded-lg mr-0 flex items-center justify-center gap-3">
+        <Link
+          href={"/showroom"}
+          className="text-black text-center font-semibold p-2 rounded-lg mr-0 flex items-center justify-center gap-3"
+        >
           Voir tous les showrooms <Image src="/images/icons/arrow-right.svg" alt="arrow" width={20} height={20} />
         </Link>
       </div>
