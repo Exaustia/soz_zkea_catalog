@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useMenu } from "../context/MenuProvider";
 import classNames from "classnames";
+import Image from "next/image";
 
 /* eslint-disable @next/next/no-img-element */
 const Header = () => {
@@ -26,7 +27,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={classNames("bg-black px-5 py-3 md:px-12 md:py-6 w-full")}>
+    <header className={classNames("px-5 py-3 md:px-12 md:py-6 w-full border-b-[1px] ")}>
       <section className="items-center w-full grid grid-cols-3 max-w-screen-2xl m-auto">
         <button className="justify-center items-center w-fit">
           <svg
@@ -38,12 +39,15 @@ const Header = () => {
             height="22"
             className="icon icon-hamburger"
             viewBox="0 0 22 22"
+            color="black"
           >
             <path d="M1 5h20M1 11h20M1 17h20" stroke="currentColor" strokeLinecap="round"></path>
           </svg>
         </button>
-        <h1 className="text-white text-2xl font-bold justify-center items-center m-auto">Soz Kea</h1>
-        <div className="gap-4 items-center justify-end flex">
+        <h1 className="text-white text-2xl font-bold justify-center items-center m-auto">
+          <Image src="/images/logo_zkea_4-01.png" alt="logo" width={100} height={100} />
+        </h1>
+        {/* <div className="gap-4 items-center justify-end flex">
           <svg
             onClick={() => toggleSearchMenu()}
             role="presentation"
@@ -74,7 +78,7 @@ const Header = () => {
               strokeLinejoin="round"
             ></path>
           </svg>
-        </div>
+        </div> */}
       </section>
     </header>
   );

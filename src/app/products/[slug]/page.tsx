@@ -53,7 +53,7 @@ export default function Product({ params }: { params: { slug: string } }) {
           <img
             src="https://via.placeholder.com/800x800"
             alt="banner"
-            className="logo object-cover scale-100 rounded-lg"
+            className="logo object-cover scale-100 rounded-sm"
           />
         </div>
         <div className="flex flex-col justify-start items-center md:items-start  md:w-1/2">

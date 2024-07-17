@@ -4,8 +4,10 @@ import React, { createContext, useState, useContext, ReactNode, useEffect } from
 interface MenuContextProps {
   menuOpen: boolean;
   searchMenuOpen: boolean;
+  viewOpen: boolean;
   toggleMenu: () => void;
   toggleSearchMenu: () => void;
+  toggleView: () => void;
 }
 
 const MenuContext = createContext<MenuContextProps | undefined>(undefined);
@@ -13,6 +15,7 @@ const MenuContext = createContext<MenuContextProps | undefined>(undefined);
 export const MenuProvider = ({ children }: { children: ReactNode }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchMenuOpen, setSearchMenuOpen] = useState(false);
+  const [viewOpen, setViewOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -22,8 +25,12 @@ export const MenuProvider = ({ children }: { children: ReactNode }) => {
     setSearchMenuOpen(!searchMenuOpen);
   };
 
+  const toggleView = () => {
+    setViewOpen(!viewOpen);
+  };
+
   return (
-    <MenuContext.Provider value={{ menuOpen, toggleMenu, searchMenuOpen, toggleSearchMenu }}>
+    <MenuContext.Provider value={{ menuOpen, toggleMenu, searchMenuOpen, toggleSearchMenu, toggleView, viewOpen }}>
       {children}
     </MenuContext.Provider>
   );

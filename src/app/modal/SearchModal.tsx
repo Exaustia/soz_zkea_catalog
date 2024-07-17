@@ -46,7 +46,7 @@ const SearchModal = () => {
   return (
     <div
       className={classNames(
-        "search-modal absolute min-h-[70vh] h-[calc(100vh-2rem)] z-20 top-4 right-4 bottom-0 bg-modal rounded-lg p-8 w-[calc(100vw-2rem)] md:w-[40vw] gap-8 flex flex-col",
+        "search-modal absolute min-h-[70vh] h-[calc(100vh-2rem)] z-20 top-4 right-4 bottom-0 bg-modal rounded-sm p-8 w-[calc(100vw-2rem)] md:w-[40vw] gap-8 flex flex-col",
         { open: !closing, close: closing }
       )}
     >

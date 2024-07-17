@@ -6,7 +6,6 @@ import { category } from "@/configs/category";
 const NavModal = () => {
   const { toggleMenu, menuOpen } = useMenu();
   const [closing, setClosing] = useState(false);
-  const [hoverCategory, setHoverCategory] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
   const categoryBtnRef = useRef<HTMLButtonElement | null>(null);
 
@@ -16,29 +15,6 @@ const NavModal = () => {
       return () => clearTimeout(timer);
     }
   }, [menuOpen, closing]);
-
-  useEffect(() => {
-    if (!categoryBtnRef.current) return;
-
-    const handleMouseEnter = () => {
-      setHoverCategory(true);
-      categoryBtnRef.current?.querySelector("span")?.classList.add("bg-white");
-    };
-
-    const handleMouseLeave = () => {
-      setHoverCategory(false);
-      categoryBtnRef.current?.querySelector("span")?.classList.remove("bg-white");
-    };
-
-    const CategoryBtn = categoryBtnRef.current;
-    CategoryBtn.addEventListener("mouseenter", handleMouseEnter);
-    CategoryBtn.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      CategoryBtn.removeEventListener("mouseenter", handleMouseEnter);
-      CategoryBtn.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, []);
 
   const handleClose = () => {
     setClosing(true);
@@ -52,7 +28,7 @@ const NavModal = () => {
   return (
     <div
       className={classNames(
-        "nav-modal absolute min-h-[70vh] h-[calc(100vh-2rem)] z-20 top-4 left-4 bottom-0 bg-modal rounded-lg p-8 w-[calc(100vw-2rem)] md:w-[360px] gap-8 flex flex-col",
+        "nav-modal absolute min-h-[70vh] h-[calc(100vh-2rem)] z-20 top-4 left-4 bottom-0 rounded-sm p-8 w-[calc(100vw-2rem)] md:w-[360px] gap-8 flex flex-col text-black bg-white",
         { open: !closing, close: closing }
       )}
     >
@@ -81,9 +57,9 @@ const NavModal = () => {
             "translate-x-[0%]": !showCategory,
           })}
         >
-          <ul className="flex flex-col gap-4 text-3xl w-full">
-            <li>
-              <a href="/" className="text-white gradient-hover">
+          <ul className="flex flex-col gap-4 text-3xl w-full text-black">
+            <li className="">
+              <a href="/" className="text-black">
                 Accueil
               </a>
             </li>
@@ -91,12 +67,12 @@ const NavModal = () => {
               <button
                 ref={categoryBtnRef}
                 onClick={() => setShowCategory(true)}
-                className="text-white flex justify-between items-center w-full CategoryBtn"
+                className="flex justify-between items-center w-full CategoryBtn"
               >
                 Categories
                 <span
                   className={classNames(
-                    "w-6 h-6 rounded-full  bg-blackFrame items-center flex justify-center hover:bg-white"
+                    "w-6 h-6 rounded-full items-center flex justify-center border-1 border-black bg-white"
                   )}
                 >
                   <svg
@@ -107,22 +83,17 @@ const NavModal = () => {
                     className="icon icon-chevron-right-small reverse-icon"
                     viewBox="0 0 5 8"
                   >
-                    <path
-                      d="m.75 7 3-3-3-3"
-                      fill={"none"}
-                      stroke={hoverCategory ? "#000000" : "currentColor"}
-                      strokeWidth="1.5"
-                    ></path>
+                    <path d="m.75 7 3-3-3-3" fill={"none"} stroke={"currentColor"} strokeWidth="1.5"></path>
                   </svg>
                 </span>{" "}
               </button>
             </li>
             <li>
-              <a href="/showroom" className="text-white gradient-hover">
+              <a href="/showroom" className="text-black ">
                 Showroom
               </a>
             </li>
-            <a href="/contact" className="text-white gradient-hover">
+            <a href="/contact" className="text-black">
               Contact
             </a>
           </ul>
@@ -153,7 +124,7 @@ const NavModal = () => {
             </button>
             {category.map((item) => (
               <li key={item.slug}>
-                <a href={"/categories/" + item.slug} className="text-white gradient-hover">
+                <a href={"/categories/" + item.slug} className="text-black">
                   {item.name}
                 </a>
               </li>
