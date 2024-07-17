@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ClientLayout from "./layout";
 import Header from "./layout/Header";
 import { MenuProvider } from "./context/MenuProvider";

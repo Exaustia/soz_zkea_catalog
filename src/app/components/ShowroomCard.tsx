@@ -16,7 +16,7 @@ const ShowroomCard = ({}) => {
       <img
         src="https://www.ikea.com/fr/fr/images/products/ramnefjaell-cadre-de-lit-matelasse-kilanda-beige-clair-luroey__1258175_pe927363_s5.jpg?f=xl"
         alt="placeholder"
-        className={"img_cat rounded-t-sm transition-all duration-500 w-full"}
+        className={"img_cat rounded-t-sm transition-all duration-500 w-full object-cover"}
       />
       <div className="absolute top-0 left-0 right-0 bottom-0 bg-opacity-10 bg-black"></div>
     </Link>
