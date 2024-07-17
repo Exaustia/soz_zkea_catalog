@@ -12,7 +12,7 @@ export const category = [
     {
         name: "Tables",
         slug: "tables",
-        image: "/images/category/tables.jpeg",
+        image: "/images/category/beds.jpeg",
     },
     {
         name: "Chaises",
@@ -27,26 +27,26 @@ export const category = [
     {
         name: "Télévisions",
         slug: "televisions",
-        image: "/images/category/televisions.jpeg",
+        image: "/images/category/beds.jpeg",
     },
     {
         name: "Lampes",
         slug: "lamps",
-        image: "/images/category/lamps.jpeg",
+        image: "/images/category/beds.jpeg",
     },
     {
         name: "Déco murales",
         slug: "wall-decor",
-        image: "/images/category/wall-decor.jpeg",
+        image: "/images/category/beds.jpeg",
     },
     {
         name: "Tapis",
         slug: "rugs",
-        image: "/images/category/rugs.jpeg",
+        image: "/images/category/beds.jpeg",
     },
     {
         name: "Autres",
         slug: "others",
-        image: "/images/category/others.jpeg",
+        image: "/images/category/beds.jpeg",
     },
 ]

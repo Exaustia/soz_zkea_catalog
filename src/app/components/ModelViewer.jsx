@@ -3,6 +3,7 @@
 import "@google/model-viewer/dist/model-viewer";
 
 const ModelViewer = () => {
+  if (typeof window === "undefined") return null;
   return (
     <div>
       <model-viewer

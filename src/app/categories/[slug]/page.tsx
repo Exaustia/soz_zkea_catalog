@@ -32,7 +32,7 @@ export default function Category({ params }: { params: { slug: string } }) {
         {productsFind.map((product) => (
           <ProductCard key={product.name} product={product} />
         ))}
-        {productsFind.length === 0 && <div className="text-start">Aucun produit trouvé</div>}
+        {productsFind.length === 0 && <div className="text-start text-black">Aucun produit trouvé</div>}
       </div>
     </DefaultLayout>
   );

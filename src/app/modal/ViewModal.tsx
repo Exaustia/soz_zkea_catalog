@@ -1,8 +1,14 @@
-import ModelViewer from "../components/ModelViewer";
+"use client";
+import dynamic from "next/dynamic";
 import { useMenu } from "../context/MenuProvider";
+
+const ModelViewer = dynamic(() => import("../components/ModelViewer"), {
+  ssr: false,
+});
 
 const ViewModal = () => {
   const { toggleView } = useMenu();
+  if (typeof window === "undefined") return null;
   return (
     <div className="z-20 m-auto left-0 right-0 top-0 bottom-0 w-[90vw] md:w-[50vw] md:h-[50vh] h-[90vh] max-w-screen-small flex justify-center items-center bg-white fixed">
       <button
