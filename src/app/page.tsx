@@ -5,6 +5,25 @@ import ProductCard from "./components/ProductCard";
 import bestsellers from "@/configs/bestSellers";
 import MenuCategory from "./components/MenuCategory";
 import CarouselPage from "./components/Carousel";
+import BasicCard from "./components/BasicCard";
+
+const cards = [
+  {
+    color: "bg-green-600",
+    title: "Un titre de fou",
+    description: "Une promotion de fou mais qui ne fonctionne pas!",
+  },
+  {
+    color: "bg-[#CC0008]",
+    title: "Un titre de fou",
+    description: "Une promotion de fou mais qui ne fonctionne pas!",
+  },
+  {
+    color: "bg-blue-600",
+    title: "Un titre de fou",
+    description: "Une promotion de fou mais qui ne fonctionne pas!",
+  },
+];
 
 export default function Home() {
   return (
@@ -24,10 +43,18 @@ export default function Home() {
             <CarouselPage />
           </div>
         </section>
-        <h2 className="text-start font-semibold text-3xl mt-14 text-black">Les BestSeller</h2>
-        <section className="grid grid-cols-2 small:grid-cols-3 mt-8 gap-8 sm:grid-cols-5 m-auto">
-          {bestsellers.map((item) => (
-            <ProductCard key={item.name} product={item} />
+        <section className="w-full mt-14">
+          <div className="w-full min-h-44 bg-[#1CCB2D] flex flex-col px-2 md:pl-8 justify-center gap-4">
+            <span className="font-semibold text-2xl">Pour profiter de nos offres Zkea Family</span>
+            <button className="bg-white text-black px-4 py-1 rounded-lg w-fit text-xs font-semibold">
+              Devenez membre ZKEA Family, c&apos;est rapide et ça ne coute que 8 Billions$!
+            </button>
+          </div>
+        </section>
+        <h2 className="text-start font-semibold text-3xl mt-14 text-black">En ce moment chez Zkea</h2>
+        <section className="grid grid-cols-1 small:grid-cols-3 mt-8 gap-8 m-auto">
+          {cards.map((item) => (
+            <BasicCard key={item.title} item={item} />
           ))}
         </section>
       </DefaultLayout>
