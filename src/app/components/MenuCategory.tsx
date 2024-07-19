@@ -3,7 +3,7 @@
 import { category } from "@/configs/category";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const MenuCategory = () => {
   const container = useRef<HTMLDivElement>(null);
@@ -18,12 +18,13 @@ const MenuCategory = () => {
     }
   };
 
+
   return (
-    <div className="relative">
+    <div className="relative" id={"cat_ctn"}>
       <div className="overflow-auto flex gap-8 p-4" ref={container} style={{ scrollBehavior: "smooth" }}>
         <button
           onClick={() => handleScroll("left")}
-          className="absolute left-0 h-7 w-7 bg-gray-900 top-0 bottom-0 m-auto rounded-full flex items-center justify-center"
+          className="absolute left-0 h-7 w-7 bg-gray-900 top-0 bottom-0 m-auto rounded-full opacity-0 flex items-center justify-center transition-all"
         >
           {"<"}
         </button>
@@ -39,7 +40,7 @@ const MenuCategory = () => {
         ))}
         <button
           onClick={() => handleScroll("right")}
-          className="absolute right-0 h-7 w-7 bg-gray-900 top-0 bottom-0 m-auto rounded-full flex items-center justify-center"
+          className="absolute right-0 h-7 w-7 bg-gray-900 top-0 bottom-0 m-auto rounded-full opacity-0 flex items-center justify-center  transition-all"
         >
           {">"}
         </button>

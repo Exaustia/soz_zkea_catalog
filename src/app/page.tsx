@@ -10,10 +10,10 @@ export default function Home() {
   return (
     <main>
       <DefaultLayout>
-        <section className="w-full hidden md:block">
+        <section className="w-full">
           <MenuCategory />
         </section>
-        <h2 className="text-start font-semibold text-3xl md:mt-14 text-black">Les Showrooms</h2>
+        <h2 className="text-start font-semibold text-3xl mt-14 text-black">Les Showrooms</h2>
         <section className="mt-4">
           <span className="text-black">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ducimus, culpa modi numquam doloribus blanditiis

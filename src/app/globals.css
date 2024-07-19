@@ -156,3 +156,8 @@ span.gradient-hover {
 .menu_category:hover span {
   text-decoration: underline;
 }
+
+#cat_ctn:hover button {
+  display: flex;
+  opacity: 1;
+}
