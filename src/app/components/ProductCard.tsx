@@ -51,7 +51,7 @@ const ProductCard = ({ product }: { product: productInterface }) => {
 
       <div className="p-4 flex gap-2 justify-between items-center h-1/4 bg-blackFrame ">
         <div className="flex flex-col">
-          <span className="text-sm font-semibold">{product.name}</span>
+          <span className="text-sm font-semibold text-white">{product.name}</span>
           <span className="text-sm font-semibold text-secondary">
             {product.price}$
           </span>
