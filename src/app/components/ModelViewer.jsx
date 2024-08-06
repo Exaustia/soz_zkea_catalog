@@ -1,13 +1,14 @@
 "use client";
 
+import getUrl from "@/utils/url";
 import "@google/model-viewer/dist/model-viewer";
 
-const ModelViewer = () => {
+const ModelViewer = (elm) => {
   if (typeof window === "undefined") return null;
   return (
-    <div>
       <model-viewer
-        src="/sm_22_pp_banner.glb"
+        class="w-full h-full"
+        src={getUrl(elm.elm, 'glb')}
         ios-src=""
         alt="3D model"
         shadow-intensity="1"
@@ -15,7 +16,6 @@ const ModelViewer = () => {
         auto-rotate
         ar
       ></model-viewer>
-    </div>
   );
 };
 

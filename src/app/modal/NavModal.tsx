@@ -28,13 +28,13 @@ const NavModal = () => {
   return (
     <div
       className={classNames(
-        "nav-modal absolute min-h-[70vh] h-[calc(100vh-2rem)] z-20 top-4 left-4 bottom-0 rounded-sm p-8 w-[calc(100vw-2rem)] md:w-[360px] gap-8 flex flex-col text-black bg-white",
+        "nav-modal absolute min-h-[70vh] h-[calc(100vh-2rem)] z-20 top-4 left-4 bottom-0 rounded-sm p-4 w-[calc(100vw-2rem)] md:w-[360px] gap-8 flex flex-col text-black bg-white",
         { open: !closing, close: closing }
       )}
     >
       <div>
         <button
-          className="menu-button justify-center items-center rounded-full w-12 h-12 border border-gray-600 flex hover:scale-125 transition-all"
+          className="menu-button justify-center items-center rounded-full w-10 h-10 border border-gray-600 flex hover:scale-125 transition-all"
           onClick={() => handleClose()}
         >
           <svg
@@ -105,10 +105,10 @@ const NavModal = () => {
             "opacity-0 translate-y-[140%]": !showCategory,
           })}
         >
-          <ul className="flex flex-col gap-4 text-base md:text-2xl">
+          <ul className="flex flex-col  text-base md:text-2xl h-full">
             <button
               onClick={() => setShowCategory(false)}
-              className="flex gap-4 items-center w-full text-lg text-gray-400"
+              className="flex gap-1 items-center w-full text-lg text-gray-400"
             >
               <svg
                 role="presentation"
@@ -123,8 +123,8 @@ const NavModal = () => {
               Categories
             </button>
             {category.map((item) => (
-              <li key={item.slug}>
-                <a href={"/categories/" + item.slug} className="text-black">
+              <li key={item.slug} className="leading-5">
+                <a href={"/categories/" + item.slug} className="text-black text-sm leading-normal">
                   {item.name}
                 </a>
               </li>

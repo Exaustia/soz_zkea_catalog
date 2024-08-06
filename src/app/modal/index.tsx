@@ -32,7 +32,7 @@ const ModalProvider = () => {
         ></div>
       )}
       {viewOpen && (
-        <div className="overlay bg-[#0006] absolute h-full top-0 left-0 w-full" onClick={() => toggleView()}></div>
+        <div className="overlay bg-[#0006] absolute h-full top-0 left-0 w-full" onClick={() => toggleView("")}></div>
       )}
     </div>
   );

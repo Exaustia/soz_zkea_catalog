@@ -1,5 +1,11 @@
 "use client";
-import React, { createContext, useState, useContext, ReactNode, useEffect } from "react";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from "react";
 
 interface MenuContextProps {
   menuOpen: boolean;
@@ -7,7 +13,8 @@ interface MenuContextProps {
   viewOpen: boolean;
   toggleMenu: () => void;
   toggleSearchMenu: () => void;
-  toggleView: () => void;
+  toggleView: (elm: string) => void;
+  elm: string;
 }
 
 const MenuContext = createContext<MenuContextProps | undefined>(undefined);
@@ -16,6 +23,7 @@ export const MenuProvider = ({ children }: { children: ReactNode }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchMenuOpen, setSearchMenuOpen] = useState(false);
   const [viewOpen, setViewOpen] = useState(false);
+  const [elm, setElm] = useState("");
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -25,12 +33,23 @@ export const MenuProvider = ({ children }: { children: ReactNode }) => {
     setSearchMenuOpen(!searchMenuOpen);
   };
 
-  const toggleView = () => {
+  const toggleView = (elm: string) => {
     setViewOpen(!viewOpen);
+    setElm(elm);
   };
 
   return (
-    <MenuContext.Provider value={{ menuOpen, toggleMenu, searchMenuOpen, toggleSearchMenu, toggleView, viewOpen }}>
+    <MenuContext.Provider
+      value={{
+        elm,
+        menuOpen,
+        toggleMenu,
+        searchMenuOpen,
+        toggleSearchMenu,
+        toggleView,
+        viewOpen,
+      }}
+    >
       {children}
     </MenuContext.Provider>
   );
