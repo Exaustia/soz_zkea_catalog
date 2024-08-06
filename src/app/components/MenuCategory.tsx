@@ -35,7 +35,7 @@ const MenuCategory = () => {
             className="flex flex-col justify-center items-center min-w-24 gap-4 cursor-pointer menu_category"
           >
             <Image src={item.image} alt="cat-img" width={80} height={80} />
-            <span className="text-black text-sm">{item.name}</span>
+            <span className="text-black text-sm text-center">{item.name}</span>
           </Link>
         ))}
         <button

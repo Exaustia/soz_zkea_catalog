@@ -5,9 +5,9 @@ import Link from "next/link";
 import { Carousel } from "react-responsive-carousel";
 
 const imgs = [
-  "https://www.ikea.com/images/mobilier-de-jardin-avec-en-premier-plan-une-main-tenant-une--89c8ce4a40d8d0be0673313c57fb6f8d.png?f=xs",
-  "https://www.ikea.com/images/mobilier-de-jardin-avec-en-premier-plan-une-main-tenant-une--89c8ce4a40d8d0be0673313c57fb6f8d.png?f=xs",
-  "https://www.ikea.com/images/mobilier-de-jardin-avec-en-premier-plan-une-main-tenant-une--89c8ce4a40d8d0be0673313c57fb6f8d.png?f=xs",
+  "/images/show_a.webp",
+  "/images/show_c.webp",
+  "/images/show_b.webp",
 ];
 
 /* eslint-disable @next/next/no-img-element */
@@ -23,7 +23,7 @@ const CarouselPage = () => {
         </Link>
       </div>
       <div className="h-56 md:h-96 relative mt-4">
-        <Carousel infiniteLoop={true} showThumbs={false}>
+        <Carousel infiniteLoop={true} showThumbs={false} interval={10}>
           {imgs.map((_, index) => (
             <Link href={"/showroom"} className={"h-56 md:h-96"} key={index}>
               <img src={_} alt="..." className={"h-56 md:h-96 object-cover"} />
