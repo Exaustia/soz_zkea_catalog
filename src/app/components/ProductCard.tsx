@@ -58,7 +58,7 @@ const ProductCard = ({ product }: { product: productInterface }) => {
         </div>
         <div className="flex flex-col">
           <span className="text-sm font-semibold">
-            {product.collision && "⚠️"}
+            {!product.collision && "⚠️"}
           </span>
         </div>
       </div>
