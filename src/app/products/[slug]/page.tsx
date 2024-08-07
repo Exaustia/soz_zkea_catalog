@@ -60,9 +60,9 @@ export default function Product({ params }: { params: { slug: string } }) {
           <h1 className="text-4xl font-bold text-center md:text-left">Product name</h1>
           <p className="text-lg text-center md:text-left mt-4">Product description</p>
           <div className="mt-4 w-full">
-            <button className="bg-primary text-white rounded-md bg-[#217D56] p-4 w-full max-w-96">
+            {/* <button className="bg-primary text-white rounded-md bg-[#217D56] p-4 w-full max-w-96">
               Ajouté aux favoris
-            </button>
+            </button> */}
           </div>
         </div>
       </section>

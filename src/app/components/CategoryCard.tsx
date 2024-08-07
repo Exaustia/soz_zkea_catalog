@@ -1,10 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 /* eslint-disable @next/next/no-img-element */
-const CategoryCard = ({ categoryName, slug }: { categoryName: string; slug: string }) => {
+const CategoryCard = ({
+  categoryName,
+  slug,
+  image,
+}: {
+  categoryName: string;
+  slug: string;
+  image: string;
+}) => {
   useEffect(() => {
     // hover on div to scale image
     const div = document.querySelector(".card_cat_" + formatName(slug));
@@ -28,11 +37,18 @@ const CategoryCard = ({ categoryName, slug }: { categoryName: string; slug: stri
   }, [slug]);
 
   return (
-    <Link href={"/categories/" + slug} className={"max-w-96 relative rounded-sm cursor-pointer overflow-hidden"}>
+    <Link
+      href={"/categories/" + slug}
+      className={"max-w-96 relative rounded-sm cursor-pointer overflow-hidden"}
+    >
       <img
-        src="https://www.ikea.com/fr/fr/images/products/ramnefjaell-cadre-de-lit-matelasse-kilanda-beige-clair-luroey__1258175_pe927363_s5.jpg?f=xl"
+        src={image}
         alt="placeholder"
-        className={"img_cat_" + formatName(slug) + " img_cat rounded-sm transition-all duration-500"}
+        className={
+          "img_cat_" +
+          formatName(slug) +
+          " img_cat rounded-sm transition-all duration-500"
+        }
       />
       <div className="absolute top-0 left-0 right-0 bottom-0 bg-opacity-30 bg-black"></div>
       <span

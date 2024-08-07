@@ -42,7 +42,7 @@ export default function Home() {
           Les Showrooms
         </h2>
         <section className="mt-4">
-          <span className="text-black">
+          <span className="text-black text-xs md:text-base">
             Bienvenue dans nos Showrooms, l&apos;endroit où les maisons simples
             deviennent extraordinaires ! Explorez nos espaces soigneusement
             aménagés pour découvrir des inspirations de décoration et
@@ -68,7 +68,7 @@ export default function Home() {
               onClick={() => setPigeonOpen(true)}
             >
               Devenez membre ZKEA Family, c&apos;est rapide et ça ne coute que 8
-              Billions$!
+              1999$!
             </button>
           </div>
         </section>
