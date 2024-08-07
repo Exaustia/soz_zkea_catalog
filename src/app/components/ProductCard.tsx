@@ -34,7 +34,7 @@ const ProductCard = ({ product }: { product: productInterface }) => {
           src={
             !imageError
               ? getUrl(product.model, "image")
-              : "/images/" + slug + ".jpeg"
+              : "/images/noimage.jpg"
           }
           unoptimized
           fill
