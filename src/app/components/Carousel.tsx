@@ -16,7 +16,7 @@ const CarouselPage = () => {
     <div>
       <div className="w-full justify-center flex">
         <Link
-          href={"/showroom"}
+          href={"/"}
           className="text-black text-center font-semibold p-2 rounded-lg mr-0 flex items-center justify-center gap-3"
         >
           Voir tous les showrooms <Image src="/images/icons/arrow-right.svg" alt="arrow" width={20} height={20} />

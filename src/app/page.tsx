@@ -67,7 +67,7 @@ export default function Home() {
               className="bg-white text-black px-4 py-1 rounded-lg w-fit text-xs font-semibold"
               onClick={() => setPigeonOpen(true)}
             >
-              Devenez membre ZKEA Family, c&apos;est rapide et ça ne coute que 8
+              Devenez membre ZKEA Family, c&apos;est rapide et ça ne coute que
               1999$!
             </button>
           </div>
