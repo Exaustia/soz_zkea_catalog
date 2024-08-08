@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Carousel } from "react-responsive-carousel";
 
 const imgs = [
-  "/images/show_a.webp",
+  "/images/ZKEA1.png",
   "/images/show_c.webp",
   "/images/show_b.webp",
 ];

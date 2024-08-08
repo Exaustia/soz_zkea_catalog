@@ -71,6 +71,8 @@ export const Products = ({
       handleSort("price");
     } else if (orderBy === "az") {
       handleSort("az");
+    } else {
+      setProductsOrder(products);
     }
   }, [handleSort, products, searchParams]);
 
@@ -111,7 +113,14 @@ export const Products = ({
         >
           Prix
         </button>
-        /<button onClick={() =>  router.push(pathname + "?" + createQueryString("sort", "az"))}>A-Z</button>
+        /
+        <button
+          onClick={() =>
+            router.push(pathname + "?" + createQueryString("sort", "az"))
+          }
+        >
+          A-Z
+        </button>
       </div>
       {isSorting && (
         <div className="text-center font-semibold">Tri en cours...</div>

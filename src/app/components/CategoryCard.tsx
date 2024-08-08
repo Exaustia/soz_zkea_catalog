@@ -55,7 +55,7 @@ const CategoryCard = ({
         className={
           "card_cat_" +
           formatName(slug) +
-          " text-2xl md:text-4xl absolute  font-semibold justify-center items-center flex top-0 left-0 bottom-0 right-0 text-center"
+          " text-2xl md:text-4xl absolute  font-semibold justify-center items-center flex top-0 left-0 bottom-0 right-0 text-center text-white"
         }
       >
         {categoryName}
