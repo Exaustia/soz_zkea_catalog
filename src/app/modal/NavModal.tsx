@@ -46,16 +46,22 @@ const NavModal = () => {
             className="icon icon-close"
             viewBox="0 0 24 24"
           >
-            <path d="M17.658 6.343 6.344 17.657M17.658 17.657 6.344 6.343" stroke="currentColor"></path>
+            <path
+              d="M17.658 6.343 6.344 17.657M17.658 17.657 6.344 6.343"
+              stroke="currentColor"
+            ></path>
           </svg>
         </button>
       </div>
       <section className="flex flex-col gap-4 text-3xl w-full font-semibold transition-all duration-600">
         <div
-          className={classNames("flex flex-col transition-all duration-700 w-full", {
-            "translate-x-[-140%]": showCategory,
-            "translate-x-[0%]": !showCategory,
-          })}
+          className={classNames(
+            "flex flex-col transition-all duration-700 w-full",
+            {
+              "translate-x-[-140%]": showCategory,
+              "translate-x-[0%]": !showCategory,
+            }
+          )}
         >
           <ul className="flex flex-col gap-4 text-3xl w-full text-black">
             <li className="">
@@ -83,25 +89,28 @@ const NavModal = () => {
                     className="icon icon-chevron-right-small reverse-icon"
                     viewBox="0 0 5 8"
                   >
-                    <path d="m.75 7 3-3-3-3" fill={"none"} stroke={"currentColor"} strokeWidth="1.5"></path>
+                    <path
+                      d="m.75 7 3-3-3-3"
+                      fill={"none"}
+                      stroke={"currentColor"}
+                      strokeWidth="1.5"
+                    ></path>
                   </svg>
                 </span>{" "}
               </button>
             </li>
             <li>
-              <a href="/showroom" className="text-black ">
+              <a href="/" className="text-black ">
                 Showroom
               </a>
-            </li>
-            <a href="/contact" className="text-black">
-              Contact
-            </a>
+            </li> 
           </ul>
         </div>
 
         <div
           className={classNames("flex flex-col transition-all duration-700 ", {
-            "opacity-100 md:translate-y-[-35%] translate-y-[-45%]": showCategory,
+            "opacity-100 md:translate-y-[-25%] translate-y-[-32%]":
+              showCategory,
             "opacity-0 translate-y-[140%]": !showCategory,
           })}
         >
@@ -118,13 +127,21 @@ const NavModal = () => {
                 className="icon icon-chevron-right-small reverse-icon rotate-180"
                 viewBox="0 0 5 8"
               >
-                <path d="m.75 7 3-3-3-3" fill={"none"} stroke={"currentColor"} strokeWidth="2"></path>{" "}
+                <path
+                  d="m.75 7 3-3-3-3"
+                  fill={"none"}
+                  stroke={"currentColor"}
+                  strokeWidth="2"
+                ></path>{" "}
               </svg>
               Categories
             </button>
             {category.map((item) => (
               <li key={item.slug} className="leading-5">
-                <a href={"/categories/" + item.slug} className="text-black text-sm leading-normal">
+                <a
+                  href={"/categories/" + item.slug}
+                  className="text-black text-sm leading-normal"
+                >
                   {item.name}
                 </a>
               </li>
