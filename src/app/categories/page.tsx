@@ -1,6 +1,3 @@
-import Image from "next/image";
-import { useRouter } from "next/router";
-
 import type { Metadata, ResolvingMetadata } from "next";
 import BreadCumb from "@/app/components/Breadcrumb";
 import DefaultLayout from "@/app/layout/DefaultLayout";
@@ -11,10 +8,7 @@ export const metadata: Metadata = {
   title: "Soz - Catégories",
 };
 
-
-
 export default function Category() {
-  console.log(category)
   return (
     <DefaultLayout>
       <BreadCumb current={"Categories"} />

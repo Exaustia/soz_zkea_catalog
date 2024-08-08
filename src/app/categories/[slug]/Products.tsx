@@ -105,16 +105,26 @@ export const Products = ({
         routing={[{ name: "Categories", path: "/categories" }]}
         current={currentCategory?.name}
       />
-      <div className="mt-8 flex justify-end text-sm font-semibold text-gray-900 opacity-60 gap-3">
+      <div className="mt-8 flex justify-end text-sm gap-3">
         <button
+          className={classNames({
+            "text-black font-semibold opacity-1":
+              searchParams.get("sort") === "price",
+            "text-gray-900 opacity-60": searchParams.get("sort") !== "price",
+          })}
           onClick={() =>
             router.push(pathname + "?" + createQueryString("sort", "price"))
           }
         >
           Prix
         </button>
-        /
+        <span className="text-black">/</span>
         <button
+          className={classNames({
+            "text-black font-semibold opacity-1":
+              searchParams.get("sort") === "az",
+            "text-gray-900 opacity-60": searchParams.get("sort") !== "az",
+          })}
           onClick={() =>
             router.push(pathname + "?" + createQueryString("sort", "az"))
           }
