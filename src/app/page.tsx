@@ -6,11 +6,15 @@ import CarouselPage from "./components/Carousel";
 
 import { useMenu } from "./context/MenuProvider";
 import { randomProduct } from "@/configs/randomProduct";
-import ProductCard from "./components/ProductCard";
+import ProductCard, { productInterface } from "./components/ProductCard";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const { setPigeonOpen } = useMenu();
-  const products = randomProduct();
+  const [products, setProducts] = useState<productInterface[]>();
+  useEffect(() => {
+    setProducts(randomProduct());
+  }, []);
 
   return (
     <main>
@@ -56,9 +60,10 @@ export default function Home() {
           En ce moment chez Zkea
         </h2>
         <section className="grid grid-cols-1 small:grid-cols-3 mt-8 gap-8 m-auto">
-          {products.map((item) => (
-            <ProductCard key={item.name} product={item} />
-          ))}
+          {products &&
+            products.map((item) => (
+              <ProductCard key={item.name} product={item} />
+            ))}
         </section>
       </DefaultLayout>
     </main>
