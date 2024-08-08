@@ -3,8 +3,9 @@ import ProductCard from "@/app/components/ProductCard";
 import { ProductI } from "./page";
 import BreadCumb from "@/app/components/Breadcrumb";
 import DefaultLayout from "@/app/layout/DefaultLayout";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import classNames from "classnames";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 type CurrentCategory = {
   name: string;
@@ -19,8 +20,11 @@ export const Products = ({
   currentCategory: CurrentCategory;
 }) => {
   const [showBtnTop, setShowBtnTop] = useState(false);
-  const [productsOrder, setProductsOrder] = useState<ProductI[]>(products);
+  const [productsOrder, setProductsOrder] = useState<ProductI[]>([]);
   const [isSorting, setIsSorting] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,23 +40,46 @@ export const Products = ({
     };
   }, []);
 
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
+
+  const handleSort = useCallback(
+    async (type: "az" | "price") => {
+      router.push(pathname + "?" + createQueryString("sort", type));
+      setIsSorting(true);
+      let sortedProducts: ProductI[] = [];
+      if (type === "az") {
+        sortedProducts = await sortProductsAZ(products);
+      } else if (type === "price") {
+        sortedProducts = await sortProducts(products);
+      }
+      setProductsOrder(sortedProducts);
+      setIsSorting(false);
+    },
+    [createQueryString, pathname, products, router]
+  );
+
+  useEffect(() => {
+    const orderBy = searchParams.get("sort");
+    if (orderBy === "price") {
+      handleSort("price");
+    } else if (orderBy === "az") {
+      handleSort("az");
+    }
+  }, [handleSort, products, searchParams]);
+
   const handleTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-  };
-
-  const handleSort = async (type: "az" | "price") => {
-    setIsSorting(true);
-    let sortedProducts: ProductI[] = [];
-    if (type === "az") {
-      sortedProducts = await sortProductsAZ(products);
-    } else if (type === "price") {
-      sortedProducts = await sortProducts(products);
-    }
-    setProductsOrder(sortedProducts);
-    setIsSorting(false);
   };
 
   const sortProducts = (products: ProductI[]): Promise<ProductI[]> => {
