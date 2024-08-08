@@ -12,9 +12,28 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const { setPigeonOpen } = useMenu();
   const [products, setProducts] = useState<productInterface[]>();
+
   useEffect(() => {
-    setProducts(randomProduct());
+    if (window.innerWidth < 1270) {
+      setProducts(randomProduct().slice(0, 3));
+    } else {
+      setProducts(randomProduct());
+    }
   }, []);
+
+  useEffect(() => {
+    // remove one product if screen is small
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 1270) {
+        setProducts((prev) => prev?.slice(0, 3));
+      } else if (window.innerWidth > 1270) {
+        if (products?.length === 3) {
+          setProducts(randomProduct());
+        }
+      }
+    });
+  }, [products]);
 
   return (
     <main>
@@ -59,7 +78,7 @@ export default function Home() {
         <h2 className="text-start font-semibold text-3xl mt-14 text-black">
           En ce moment chez Zkea
         </h2>
-        <section className="grid grid-cols-1 small:grid-cols-3 mt-8 gap-8 m-auto">
+        <section className="grid grid-cols-1 small:grid-cols-2 mt-8 gap-8 sm:grid-cols-3 xl:grid-cols-4 m-auto">
           {products &&
             products.map((item) => (
               <ProductCard key={item.name} product={item} />

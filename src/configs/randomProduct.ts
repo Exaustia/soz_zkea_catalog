@@ -9,7 +9,7 @@ export const randomProduct = () => {
 
   const randomProducts = Object.values(products)
     .sort(() => Math.random() - Math.random())
-    .slice(0, 3);
+    .slice(0, 4);
 
   return randomProducts;
 };
