@@ -52,7 +52,6 @@ export const Products = ({
 
   const handleSort = useCallback(
     async (type: "az" | "price") => {
-      router.push(pathname + "?" + createQueryString("sort", type));
       setIsSorting(true);
       let sortedProducts: ProductI[] = [];
       if (type === "az") {
@@ -63,7 +62,7 @@ export const Products = ({
       setProductsOrder(sortedProducts);
       setIsSorting(false);
     },
-    [createQueryString, pathname, products, router]
+    [products]
   );
 
   useEffect(() => {
@@ -105,8 +104,14 @@ export const Products = ({
         current={currentCategory?.name}
       />
       <div className="mt-8 flex justify-end text-sm font-semibold text-gray-900 opacity-60 gap-3">
-        <button onClick={() => handleSort("price")}>Prix</button>/
-        <button onClick={() => handleSort("az")}>A-Z</button>
+        <button
+          onClick={() =>
+            router.push(pathname + "?" + createQueryString("sort", "price"))
+          }
+        >
+          Prix
+        </button>
+        /<button onClick={() =>  router.push(pathname + "?" + createQueryString("sort", "az"))}>A-Z</button>
       </div>
       {isSorting && (
         <div className="text-center font-semibold">Tri en cours...</div>
