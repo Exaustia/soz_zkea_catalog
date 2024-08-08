@@ -43,7 +43,7 @@ export const category = [
   {
     name: "Divers",
     slug: "divers",
-    image: "/images/category/beds.jpeg",
+    image: "/images/category/extincteur.jpeg",
   },
   {
     name: "Drapeau et Logo",
