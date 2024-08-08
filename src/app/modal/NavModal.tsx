@@ -100,7 +100,7 @@ const NavModal = () => {
               </button>
             </li>
             <li>
-              <a href="/" className="text-black ">
+              <a href="/showroom" className="text-black ">
                 Showroom
               </a>
             </li> 

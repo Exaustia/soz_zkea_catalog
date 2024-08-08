@@ -10,7 +10,7 @@ import { findSlug } from "@/utils/findType";
 
 /* eslint-disable @next/next/no-img-element */
 
-interface productInterface {
+export interface productInterface {
   type: string;
   name: string;
   model: string;
@@ -50,7 +50,7 @@ const ProductCard = ({ product }: { product: productInterface }) => {
         ></div>
       </div>
 
-      <div className="p-4 flex gap-2 justify-between items-center h-1/4 bg-blackFrame ">
+      <div className="p-4 flex gap-2 justify-between items-center h-1/4 bg-blackFrame opacity-75 ">
         <div className="flex flex-col">
           <span className="text-sm font-semibold text-white">{product.name}</span>
           <span className="text-sm font-semibold text-secondary">

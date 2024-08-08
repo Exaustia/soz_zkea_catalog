@@ -3,35 +3,15 @@ import DefaultLayout from "./layout/DefaultLayout";
 
 import MenuCategory from "./components/MenuCategory";
 import CarouselPage from "./components/Carousel";
-import BasicCard from "./components/BasicCard";
-import { useMenu } from "./context/MenuProvider";
 
-const cards = [
-  {
-    color: "bg-green-600",
-    title: "Petit Caillou",
-    image: "caillou_a.jpg",
-    description:
-      'Un classique intemporel ! Le Petit Caillou, votre compagnon de poche parfait. Parfait pour les collectionneurs débutants ou pour ceux qui cherchent un nouveau "meilleur ami" qui ne parle jamais. Attention, il peut mordre... si vous avez une imagination débordante !',
-  },
-  {
-    color: "bg-[#CC0008]",
-    title: "Caillou de Compétition",
-    image: "caillou_c.jpg",
-    description:
-      " Le Plus Gros Caillou, pour ceux qui veulent passer au niveau supérieur. Plus gros, plus lourd, et avec une présence imposante. Idéal pour les démonstrations de force, ou simplement pour impressionner vos amis. Parce que, avouons-le, qui n'aimerait pas avoir un caillou XXL ?",
-  },
-  {
-    color: "bg-blue-600",
-    title: "Pierre Venue des Étoiles",
-    image: "caillou_b.jpg",
-    description:
-      "La Météorite, un véritable morceau de l'espace à portée de main ! Pour ceux qui rêvent de l'infini et au-delà. Avoir une météorite, c'est un peu comme avoir son propre mini-OVNI. Parfait pour épater la galerie et se prendre pour un astronaute sans quitter son canapé.",
-  },
-];
+import { useMenu } from "./context/MenuProvider";
+import { randomProduct } from "@/configs/randomProduct";
+import ProductCard from "./components/ProductCard";
 
 export default function Home() {
   const { setPigeonOpen } = useMenu();
+  const products = randomProduct();
+
   return (
     <main>
       <DefaultLayout>
@@ -46,15 +26,15 @@ export default function Home() {
             Bienvenue dans nos Showrooms, l&apos;endroit où les maisons simples
             deviennent extraordinaires ! Explorez nos espaces soigneusement
             aménagés pour découvrir des inspirations de décoration et
-            d&apos;agencement. Chaque showroom est conçu pour vous donner un aperçu
-            réaliste et chaleureux de ce à quoi pourrait ressembler votre future
-            maison. Laissez-vous charmer par nos intérieurs accueillants, des
-            cuisines fonctionnelles aux salons confortables. Entrez, faites
+            d&apos;agencement. Chaque showroom est conçu pour vous donner un
+            aperçu réaliste et chaleureux de ce à quoi pourrait ressembler votre
+            future maison. Laissez-vous charmer par nos intérieurs accueillants,
+            des cuisines fonctionnelles aux salons confortables. Entrez, faites
             comme chez vous, et laissez libre cours à vos rêves d&apos;habitat
             parfait. On parie que vous ne voudrez plus partir !
           </span>
 
-          <div className="flex max-h-[480px] mt-8">
+          <div className="flex mt-8">
             <CarouselPage />
           </div>
         </section>
@@ -76,8 +56,8 @@ export default function Home() {
           En ce moment chez Zkea
         </h2>
         <section className="grid grid-cols-1 small:grid-cols-3 mt-8 gap-8 m-auto">
-          {cards.map((item) => (
-            <BasicCard key={item.title} item={item} />
+          {products.map((item) => (
+            <ProductCard key={item.name} product={item} />
           ))}
         </section>
       </DefaultLayout>
