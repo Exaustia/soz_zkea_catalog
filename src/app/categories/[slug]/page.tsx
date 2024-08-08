@@ -5,11 +5,19 @@ import ProductCard from "../../components/ProductCard";
 import { category } from "@/configs/category";
 import products from "@/configs/products";
 import { findType } from "@/utils/findType";
+import { Products } from "./Products";
 
 type Props = {
   params: { slug: string };
 };
 
+export interface ProductI {
+  type: string;
+  name: string;
+  model: string;
+  price: number;
+  collision: boolean;
+}
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
@@ -26,25 +34,10 @@ export default function Category({ params }: { params: { slug: string } }) {
 
   const productsFind = Object.values(products).filter(
     (product) => product.type === cat
-  );
+  ) as ProductI[];
 
   const currentCategory = category.find((item) => item.slug === params.slug);
   if (!currentCategory) return null;
 
-  return (
-    <DefaultLayout>
-      <BreadCumb
-        routing={[{ name: "Categories", path: "/categories" }]}
-        current={currentCategory?.name}
-      />
-      <div className="grid grid-cols-1 small:grid-cols-2 mt-8 gap-8 sm:grid-cols-3 xl:grid-cols-4 m-auto">
-        {productsFind.map((product) => (
-          <ProductCard key={product.model} product={product} />
-        ))}
-        {productsFind.length === 0 && (
-          <div className="text-start text-black">Aucun produit trouvé</div>
-        )}
-      </div>
-    </DefaultLayout>
-  );
+  return <Products products={productsFind} currentCategory={currentCategory} />;
 }
