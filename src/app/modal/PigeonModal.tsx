@@ -28,7 +28,7 @@ const PigeonModal = () => {
       </button>
       <div className="p-4 text-center">
         <span>
-          Envoyez le montant indiqué (1999$), à l&apos;addresse
+          Envoyez le montant indiqué (1999$), à l&apos;adresse
           suivante: <b>648Z9403T693</b>
         </span>
       </div>
