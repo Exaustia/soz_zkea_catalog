@@ -22,7 +22,7 @@ body {
   background-image: url("/images/background_soz.webp");
   /* dezoom le background image en mobile
   background-size: cover; */
-
+  min-height: 100vh;
   /* media query pour les mobiles */
   @media (max-width: 640px) {
     background-size: 100%;

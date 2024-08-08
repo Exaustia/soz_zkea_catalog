@@ -12,7 +12,7 @@ const CarouselPage = () => {
     <div className="h-fit">
       <div className="w-full justify-center flex">
         <Link
-          href={"/showrooms"}
+          href={"/showroom"}
           className="text-black text-center font-semibold p-2 rounded-lg mr-0 flex items-center justify-center gap-3"
         >
           Voir tous les showroom{" "}
