@@ -26,6 +26,7 @@ const ProductCard = ({ product }: { product: productInterface }) => {
 
   return (
     <div
+      id={product.model}
       className={
         "relative rounded-sm cursor-pointer overflow-hidden hover:shadow-2xl transition-all h-72"
       }

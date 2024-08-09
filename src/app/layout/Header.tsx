@@ -55,7 +55,7 @@ const Header = () => {
         </button>
         <Link
           href={"/"}
-          className="text-white text-2xl font-bold justify-center items-center m-auto"
+          className="text-black text-2xl font-bold justify-center items-center m-auto"
         >
           <Image
             src="/images/logo_zkea_4-01.png"
@@ -64,7 +64,7 @@ const Header = () => {
             height={100}
           />
         </Link>
-        {/* <div className="gap-4 items-center justify-end flex">
+        <div className="gap-4 items-center justify-end flex">
           <svg
             onClick={() => toggleSearchMenu()}
             role="presentation"
@@ -75,8 +75,8 @@ const Header = () => {
             className="icon icon-search cursor-pointer"
             viewBox="0 0 22 22"
           >
-            <circle cx="11" cy="10" r="7" fill="none" stroke="currentColor"></circle>
-            <path d="m16 15 3 3" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"></path>
+            <circle cx="11" cy="10" r="7" fill="none" stroke="black"></circle>
+            <path d="m16 15 3 3" stroke="black" strokeLinecap="round" strokeLinejoin="round"></path>
           </svg>
           <svg
             role="presentation"
@@ -95,7 +95,7 @@ const Header = () => {
               strokeLinejoin="round"
             ></path>
           </svg>
-        </div> */}
+        </div>
       </section>
     </header>
   );
