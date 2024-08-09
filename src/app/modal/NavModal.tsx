@@ -66,7 +66,11 @@ const NavModal = () => {
         >
           <ul className="flex flex-col gap-4 text-3xl w-full text-black">
             <li className="">
-              <Link href="/" className="text-black">
+              <Link
+                href="/"
+                className="text-black"
+                onClick={() => handleClose()}
+              >
                 Accueil
               </Link>
             </li>
@@ -101,7 +105,11 @@ const NavModal = () => {
               </button>
             </li>
             <li>
-              <Link href="/showroom" className="text-black ">
+              <Link
+                href="/showroom"
+                className="text-black"
+                onClick={() => handleClose()}
+              >
                 Showroom
               </Link>
             </li>
@@ -142,6 +150,7 @@ const NavModal = () => {
                 <Link
                   href={"/categories/" + item.slug}
                   className="text-black text-sm leading-normal"
+                  onClick={() => handleClose()}
                 >
                   {item.name}
                 </Link>
