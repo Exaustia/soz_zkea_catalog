@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { useMenu } from "../context/MenuProvider";
 import { useEffect, useRef, useState } from "react";
 import { category } from "@/configs/category";
+import Link from "next/link";
 
 const NavModal = () => {
   const { toggleMenu, menuOpen } = useMenu();
@@ -65,9 +66,9 @@ const NavModal = () => {
         >
           <ul className="flex flex-col gap-4 text-3xl w-full text-black">
             <li className="">
-              <a href="/" className="text-black">
+              <Link href="/" className="text-black">
                 Accueil
-              </a>
+              </Link>
             </li>
             <li>
               <button
@@ -100,10 +101,10 @@ const NavModal = () => {
               </button>
             </li>
             <li>
-              <a href="/showroom" className="text-black ">
+              <Link href="/showroom" className="text-black ">
                 Showroom
-              </a>
-            </li> 
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -138,12 +139,12 @@ const NavModal = () => {
             </button>
             {category.map((item) => (
               <li key={item.slug} className="leading-5">
-                <a
+                <Link
                   href={"/categories/" + item.slug}
                   className="text-black text-sm leading-normal"
                 >
                   {item.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
