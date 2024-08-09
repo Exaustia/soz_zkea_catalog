@@ -8,6 +8,7 @@ import { useMenu } from "../context/MenuProvider";
 import getUrl from "@/utils/url";
 import { findSlug } from "@/utils/findType";
 import classNames from "classnames";
+import { useShop } from "../context/ShopProvider";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -21,8 +22,11 @@ export interface productInterface {
 
 const ProductCard = ({ product }: { product: productInterface }) => {
   const { toggleView } = useMenu();
+  const { addShopItem, removeShopItem, shopItems } = useShop();
   const [isHover, setIsHover] = useState(false);
   const [imageError, setImageError] = useState(false);
+
+  const isShopItem = shopItems.find((item) => item.model === product.model);
 
   return (
     <div
@@ -32,6 +36,14 @@ const ProductCard = ({ product }: { product: productInterface }) => {
       }
     >
       <div className="relative w-full h-3/4">
+        <button
+          onClick={() => {
+            isShopItem ? removeShopItem(product) : addShopItem(product);
+          }}
+          className="z-10 absolute top-2 right-2 p-1 bg-gray-500 text-xs bg-opacity-45 rounded-md text-white font-semibold"
+        >
+          {isShopItem ? "Retirer du panier -" : "Ajouter au panier +"}
+        </button>
         <Image
           src={
             !imageError ? getUrl(product.model, "image") : "/images/noimage.jpg"
@@ -41,7 +53,9 @@ const ProductCard = ({ product }: { product: productInterface }) => {
           loading="lazy"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           alt="placeholder"
-          className={"img_cat rounded-t-sm transition-all duration-500 w-full"}
+          className={
+            "img_cat rounded-t-sm transition-all duration-500 w-full object-contain"
+          }
           onError={() => setImageError(true)}
         />
         <div

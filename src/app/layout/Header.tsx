@@ -5,10 +5,12 @@ import { useMenu } from "../context/MenuProvider";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
+import { useShop } from "../context/ShopProvider";
 
 /* eslint-disable @next/next/no-img-element */
 const Header = () => {
   const { toggleMenu, toggleSearchMenu } = useMenu();
+  const { shopCount } = useShop();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -64,7 +66,7 @@ const Header = () => {
             height={100}
           />
         </Link>
-        <div className="gap-4 items-center justify-end flex">
+        <Link href="/cart" className="gap-4 items-center justify-end flex">
           <svg
             onClick={() => toggleSearchMenu()}
             role="presentation"
@@ -76,26 +78,41 @@ const Header = () => {
             viewBox="0 0 22 22"
           >
             <circle cx="11" cy="10" r="7" fill="none" stroke="black"></circle>
-            <path d="m16 15 3 3" stroke="black" strokeLinecap="round" strokeLinejoin="round"></path>
-          </svg>
-          <svg
-            role="presentation"
-            strokeWidth="2"
-            focusable="false"
-            width="22"
-            height="22"
-            className="icon icon-cart"
-            viewBox="0 0 22 22"
-          >
             <path
-              d="M11 7H3.577A2 2 0 0 0 1.64 9.497l2.051 8A2 2 0 0 0 5.63 19H16.37a2 2 0 0 0 1.937-1.503l2.052-8A2 2 0 0 0 18.422 7H11Zm0 0V1"
-              fill="none"
-              stroke="currentColor"
+              d="m16 15 3 3"
+              stroke="black"
               strokeLinecap="round"
               strokeLinejoin="round"
             ></path>
           </svg>
-        </div>
+          <div className="relative">
+            <span
+              className={classNames(
+                { hidden: shopCount === 0 },
+                "text-white absolute -top-2 -right-2 rounded-full bg-black w-5 h-5 flex items-center justify-center p-2 text-xs font-semibold"
+              )}
+            >
+              {shopCount > 9 ? "9+" : shopCount}
+            </span>
+            <svg
+              role="presentation"
+              strokeWidth="2"
+              focusable="false"
+              width="22"
+              height="22"
+              className="icon icon-cart"
+              viewBox="0 0 22 22"
+            >
+              <path
+                d="M11 7H3.577A2 2 0 0 0 1.64 9.497l2.051 8A2 2 0 0 0 5.63 19H16.37a2 2 0 0 0 1.937-1.503l2.052-8A2 2 0 0 0 18.422 7H11Zm0 0V1"
+                fill="none"
+                stroke="black"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></path>
+            </svg>
+          </div>
+        </Link>
       </section>
     </header>
   );

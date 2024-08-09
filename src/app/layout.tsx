@@ -6,6 +6,7 @@ import ClientLayout from "./layout";
 import Header from "./layout/Header";
 import { MenuProvider } from "./context/MenuProvider";
 import Modal from "./modal";
+import { ShopProvider } from "./context/ShopProvider";
 
 const inter = DM_Sans({ subsets: ["latin"] });
 
@@ -22,13 +23,15 @@ export default function RootLayout({
 }>) {
   return (
     <MenuProvider>
-      <html lang="en">
-        <body className={inter.className + " relative"}>
-          <Header />
-          {children}
-          <Modal />
-        </body>
-      </html>
+      <ShopProvider>
+        <html lang="en">
+          <body className={inter.className + " relative"}>
+            <Header />
+            {children}
+            <Modal />
+          </body>
+        </html>
+      </ShopProvider>
     </MenuProvider>
   );
 }

@@ -12,7 +12,7 @@ export default function Category() {
   return (
     <DefaultLayout>
       <BreadCumb current={"Categories"} />
-      <div className="grid grid-cols-1 small:grid-cols-2 mt-8 gap-8 sm:grid-cols-3 xl:grid-cols-4 m-auto">
+      <div className="grid grid-cols-1 small:grid-cols-2 mt-8 gap-8 md:grid-cols-3 xl:grid-cols-4 m-auto">
         {category.map((item) => (
           <CategoryCard
             categoryName={item.name}
