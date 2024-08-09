@@ -69,6 +69,8 @@ export const Products = ({
     const orderBy = searchParams.get("sort");
     if (orderBy === "price_ascending") {
       handleSort("price_ascending");
+    } else if (orderBy === "price_descending") {
+      handleSort("price_descending");
     } else if (orderBy === "az") {
       handleSort("az");
     } else {
