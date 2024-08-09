@@ -51,13 +51,13 @@ export const Products = ({
   );
 
   const handleSort = useCallback(
-    async (type: "az" | "price") => {
+    async (type: "az" | "price_ascending" | "price_descending") => {
       setIsSorting(true);
       let sortedProducts: ProductI[] = [];
       if (type === "az") {
         sortedProducts = await sortProductsAZ(products);
-      } else if (type === "price") {
-        sortedProducts = await sortProducts(products);
+      } else if (type === "price_ascending" || type === "price_descending") {
+        sortedProducts = await sortProducts(products, type);
       }
       setProductsOrder(sortedProducts);
       setIsSorting(false);
@@ -67,8 +67,8 @@ export const Products = ({
 
   useEffect(() => {
     const orderBy = searchParams.get("sort");
-    if (orderBy === "price") {
-      handleSort("price");
+    if (orderBy === "price_ascending") {
+      handleSort("price_ascending");
     } else if (orderBy === "az") {
       handleSort("az");
     } else {
@@ -83,11 +83,21 @@ export const Products = ({
     });
   };
 
-  const sortProducts = (products: ProductI[]): Promise<ProductI[]> => {
-    return new Promise((resolve) => {
-      const sortedProducts = products.sort((a, b) => a.price - b.price);
-      resolve(sortedProducts);
-    });
+  const sortProducts = (
+    products: ProductI[],
+    type: "price_ascending" | "price_descending"
+  ): Promise<ProductI[]> => {
+    if (type === "price_ascending") {
+      return new Promise((resolve) => {
+        const sortedProducts = products.sort((a, b) => a.price - b.price);
+        resolve(sortedProducts);
+      });
+    } else {
+      return new Promise((resolve) => {
+        const sortedProducts = products.sort((a, b) => b.price - a.price);
+        resolve(sortedProducts);
+      });
+    }
   };
 
   const sortProductsAZ = (products: ProductI[]): Promise<ProductI[]> => {
@@ -109,14 +119,26 @@ export const Products = ({
         <button
           className={classNames({
             "text-black font-semibold opacity-1":
-              searchParams.get("sort") === "price",
-            "text-gray-900 opacity-60": searchParams.get("sort") !== "price",
+              searchParams.get("sort") === "price_ascending" ||
+              searchParams.get("sort") === "price_descending",
+            "text-gray-900 opacity-60":
+              searchParams.get("sort") !== "price_ascending" &&
+              searchParams.get("sort") !== "price_descending",
           })}
           onClick={() =>
-            router.push(pathname + "?" + createQueryString("sort", "price"))
+            searchParams.get("sort") === "price_ascending"
+              ? router.push(
+                  pathname + "?" + createQueryString("sort", "price_descending")
+                )
+              : router.push(
+                  pathname + "?" + createQueryString("sort", "price_ascending")
+                )
           }
         >
-          Prix
+          Prix{" "}
+          <span>
+            {searchParams.get("sort") === "price_ascending" ? "↓" : "↑"}
+          </span>
         </button>
         <span className="text-black">/</span>
         <button
