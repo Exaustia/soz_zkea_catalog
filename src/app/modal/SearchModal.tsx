@@ -1,12 +1,11 @@
 import classNames from "classnames";
 import { useMenu } from "../context/MenuProvider";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { category } from "@/configs/category";
+import { ChangeEvent, useEffect, useState } from "react";
 import useDebounce from "../hooks/searchHook";
 import { searchProductByString } from "@/utils/searchProductByString";
 import { productInterface } from "../components/ProductCard";
 import Link from "next/link";
-import { findSlug, findType } from "@/utils/findType";
+import { findSlug } from "@/utils/findType";
 
 const SearchModal = () => {
   const { searchMenuOpen, toggleSearchMenu } = useMenu();
@@ -22,7 +21,6 @@ const SearchModal = () => {
     if (debouncedSearch) {
       setLoading(true);
       setTimeout(() => setLoading(false), 2000);
-      console.log("seach for", debouncedSearch);
       const data = searchProductByString(debouncedSearch);
       setProducts(data);
     }

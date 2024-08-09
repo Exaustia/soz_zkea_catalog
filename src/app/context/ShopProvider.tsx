@@ -23,7 +23,6 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const localShopItems = getLocalStorage("soz_shopItems");
-    console.log(localShopItems);
     if (localShopItems.length > 0) {
       setShopItems(localShopItems);
     }
