@@ -6,8 +6,8 @@ on:
   push:
     branches:
       - master
-    paths:
-      - zkea_website/**
+    # paths:
+    #   - zkea_website/**
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
