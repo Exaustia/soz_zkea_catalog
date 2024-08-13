@@ -14,17 +14,13 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Change to zkea_website Directory
-        run: cd zkea_website
+      # - name: Change to zkea_website Directory
+      #   run: cd zkea_website
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
-        working-directory: zkea_website
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: zkea_website
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: zkea_website
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: zkea_website
