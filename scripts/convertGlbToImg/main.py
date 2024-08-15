@@ -41,15 +41,15 @@ def render_glb_to_image(glb_path, image_path, width=800, height=600):
 
 # Define file paths
 # Read folder model 
-models = os.listdir('./models')
-currentModel = os.listdir('./images')
+models = os.listdir('../models')
+currentModel = os.listdir('../images')
 
 for model in models:
     name = model.split('.')[0]
-    image_path = f'./images/{name}.png'
+    image_path = f'../images/{name}.png'
     if name + '.png' in currentModel:
         print(f'{name} already exists')
         continue
     
-    glb_path = f'./models/{model}'
+    glb_path = f'../models/{model}'
     render_glb_to_image(glb_path, image_path)

@@ -27,7 +27,11 @@ yarn-error.log*
 
 # local env files
 .env*.local
+/download_upload/.env
+/.env
+.env
 
+.idea 
 # vercel
 .vercel
 
@@ -36,3 +40,6 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+scripts/images/*
+scripts/models/*
