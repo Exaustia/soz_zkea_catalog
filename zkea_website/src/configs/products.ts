@@ -1,4 +1,4 @@
-export const props = {
+export const products = {
   prop_devin_box_closed: {
     type: "Meubles & Rangement",
     name: "Coffre de rangement tressé",

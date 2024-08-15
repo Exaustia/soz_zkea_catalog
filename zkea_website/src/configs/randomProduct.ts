@@ -1,15 +1,14 @@
 import { productInterface } from "@/app/components/ProductCard";
-import { props } from "./data";
+import { products } from "./products";
 
-export const randomProduct = () => {
-  // make 3 random numbers
-  const products = props;
-
-  // get 3 products randoms
-
+export const randomProduct = (): productInterface[] => {
   const randomProducts = Object.values(products)
     .sort(() => Math.random() - Math.random())
-    .slice(0, 4);
+    .slice(0, 4)
+    .map((product) => ({
+      ...product,
+      price: product.price || 0, // Set price to 0 if it's null
+    }));
 
   return randomProducts;
 };

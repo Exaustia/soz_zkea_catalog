@@ -3,9 +3,9 @@ import BreadCumb from "@/app/components/Breadcrumb";
 import DefaultLayout from "@/app/layout/DefaultLayout";
 import ProductCard from "../../components/ProductCard";
 import { category } from "@/configs/category";
-import products from "@/configs/products";
 import { findType } from "@/utils/findType";
 import { Products } from "./Products";
+import { products } from "@/configs/products";
 
 type Props = {
   params: { slug: string };

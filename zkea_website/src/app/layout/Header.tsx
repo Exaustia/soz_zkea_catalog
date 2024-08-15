@@ -66,7 +66,7 @@ const Header = () => {
             height={100}
           />
         </Link>
-        <Link href="/cart" className="gap-4 items-center justify-end flex">
+        <div className="gap-4 items-center justify-end flex">
           <svg
             onClick={() => toggleSearchMenu()}
             role="presentation"
@@ -85,7 +85,7 @@ const Header = () => {
               strokeLinejoin="round"
             ></path>
           </svg>
-          <div className="relative">
+          <Link href={"/cart"} className="relative">
             <span
               className={classNames(
                 { hidden: shopCount === 0 },
@@ -111,8 +111,8 @@ const Header = () => {
                 strokeLinejoin="round"
               ></path>
             </svg>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </section>
     </header>
   );

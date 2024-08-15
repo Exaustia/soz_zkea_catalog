@@ -1,9 +1,9 @@
 import { productInterface } from "@/app/components/ProductCard";
-import { props } from "@/configs/data";
+import { products } from "@/configs/products";
 
 export const searchProductByString = (search: string): productInterface[] => {
-  const findProduct = Object.values(props).filter((product) => {
+  const findProduct = Object.values(products).filter((product) => {
     return product.name.toLowerCase().includes(search.toLowerCase());
-  });
+  }) as productInterface[];
   return findProduct;
 };
