@@ -120,4 +120,9 @@ export const category = [
     slug: "jewelry-accessories",
     image: "/images/category/jewelry.jpeg",
   },
+  {
+    name: "Sensualité",
+    slug: "sensuality",
+    image: "/images/category/dildo.jpeg",
+  },
 ];

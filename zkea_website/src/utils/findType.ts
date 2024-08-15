@@ -23,6 +23,7 @@ export enum category {
   "boxes-crates" = "Boîtes & Caisses",
   "construction-buildings" = "Construction & Bâtiments",
   "jewelry-accessories" = "Bijoux & Accessoires",
+  "sensuality" = "Sensualité",
 }
 
 enum categoryInverse {
@@ -50,6 +51,7 @@ enum categoryInverse {
   "Boîtes & Caisses" = "boxes-crates",
   "Construction & Bâtiments" = "construction-buildings",
   "Bijoux & Accessoires" = "jewelry-accessories",
+  "Sensualité" = "sensuality",
 }
 
 export const findType = (type: string): category => {
