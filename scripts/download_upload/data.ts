@@ -15350,13 +15350,6 @@ export default {
     price: 472,
     collision: false,
   },
-  '5 kg"': {
-    type: "Fitness & Sport",
-    name: '"Poids de 1',
-    model: '5 kg"',
-    price: null,
-    collision: false,
-  },
   prop_muscle_bench_03: {
     type: "Fitness & Sport",
     name: "Banc de musculation avec haltères",
