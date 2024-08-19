@@ -95,16 +95,19 @@ const makeFileToObject = () => {
 
   for (const line of data) {
     const values = line.split(",");
-    console.log(values[2]);
+
+    console.log(values[4].length);
     dataObj[`${values[2]}`] = {
       type: values[0],
       name: values[1],
       model: values[2],
       price: parseInt(values[3]),
-      collision: values[4].replace("\r", "") === "true" ? true : false,
+      collision: values[4].length === 5 ? true : false,
     };
   }
 
   const newFile = JSON.stringify(dataObj, null, 2);
   fs.writeFileSync("./data.json", newFile);
 };
+
+makeFileToObject();
