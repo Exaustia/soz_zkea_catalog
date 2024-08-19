@@ -8,14 +8,6 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
   color: rgb(var(--foreground-rgb));
   /* background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
@@ -115,7 +107,13 @@ body {
 .gradient-hover {
   transition: background-position 0.2s ease-in-out;
   transform-origin: left;
-  background: -webkit-linear-gradient(315deg, #5bacca 5%, #26e690 55%, white 60%, white 100%);
+  background: -webkit-linear-gradient(
+    315deg,
+    #5bacca 5%,
+    #26e690 55%,
+    white 60%,
+    white 100%
+  );
   background-position: right center;
   background-size: 300% auto;
   -webkit-background-clip: text;
