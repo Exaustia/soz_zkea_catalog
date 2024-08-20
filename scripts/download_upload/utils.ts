@@ -110,4 +110,14 @@ const makeFileToObject = () => {
   fs.writeFileSync("./data.json", newFile);
 };
 
-makeFileToObject();
+
+const getAllFileButNotSoz = () => {
+  const result = Object.values(data).map((e) => {
+    if (!e.model.startsWith("soz_") || !e.model.startsWith("soz")) {
+      return e.model;
+    }
+  });
+
+  fs.writeFileSync("./result.json", JSON.stringify(result));
+};
+getAllFileButNotSoz();

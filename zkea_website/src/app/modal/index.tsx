@@ -39,10 +39,7 @@ const ModalProvider = () => {
       )}
       {searchMenuOpen && <SearchModal />}
       {pigeonOpen && (
-        <div
-          className="overlay bg-[#0006] absolute h-full top-0 left-0 w-full"
-          onClick={() => setPigeonOpen(false)}
-        >
+        <div className="overlay bg-[#0006] absolute h-full top-0 left-0 w-full">
           <PigeonModal />
         </div>
       )}
