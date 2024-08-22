@@ -1,12 +1,12 @@
 "use client";
 import DefaultLayout from "./layout/DefaultLayout";
 
-import MenuCategory from "./components/MenuCategory";
-import CarouselPage from "./components/Carousel";
+import MenuCategory from "../components/MenuCategory";
+import CarouselPage from "../components/Carousel";
 
-import { useMenu } from "./context/MenuProvider";
+import { useMenu } from "../context/MenuProvider";
 import { randomProduct } from "@/configs/randomProduct";
-import ProductCard, { productInterface } from "./components/ProductCard";
+import ProductCard, { productInterface } from "../components/ProductCard";
 import { useEffect, useState } from "react";
 
 export default function Home() {

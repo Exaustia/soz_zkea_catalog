@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useMenu } from "../context/MenuProvider";
+import { useMenu } from "../../context/MenuProvider";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
-import { useShop } from "../context/ShopProvider";
+import { useShop } from "../../context/ShopProvider";
 
 /* eslint-disable @next/next/no-img-element */
 const Header = () => {

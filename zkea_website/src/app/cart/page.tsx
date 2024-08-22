@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import BreadCumb from "@/app/components/Breadcrumb";
+import BreadCumb from "@/components/Breadcrumb";
 import DefaultLayout from "@/app/layout/DefaultLayout";
 import { Cart } from "./Cart";
 

@@ -2,8 +2,6 @@ import sharp from "sharp";
 import { config } from "dotenv";
 import fs from "fs";
 
-import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { getAWSImgs, getAWSModels } from "./utils";
 
 config();
 

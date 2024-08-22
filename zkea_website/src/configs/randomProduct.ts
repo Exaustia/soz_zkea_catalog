@@ -1,4 +1,4 @@
-import { productInterface } from "@/app/components/ProductCard";
+import { productInterface } from "@/components/ProductCard";
 import { products } from "./products";
 
 export const randomProduct = (): productInterface[] => {

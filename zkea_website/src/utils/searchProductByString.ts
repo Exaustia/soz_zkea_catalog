@@ -1,4 +1,4 @@
-import { productInterface } from "@/app/components/ProductCard";
+import { productInterface } from "@/components/ProductCard";
 import { products } from "@/configs/products";
 
 export const searchProductByString = (search: string): productInterface[] => {

@@ -1,7 +1,7 @@
 "use client";
-import ProductCard from "@/app/components/ProductCard";
+import ProductCard from "@/components/ProductCard";
 import { ProductI } from "./page";
-import BreadCumb from "@/app/components/Breadcrumb";
+import BreadCumb from "@/components/Breadcrumb";
 import DefaultLayout from "@/app/layout/DefaultLayout";
 import { useCallback, useEffect, useState } from "react";
 import classNames from "classnames";

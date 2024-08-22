@@ -1,15 +1,6 @@
-import data from "./data";
+import data from "../props/data";
+import { DataType } from "../types";
 
-
-type DataType = {
-  [key: string]: {
-    type: string;
-    name: string;
-    model: string;
-    price: number;
-    collision: boolean;
-  };
-};
 
 const dataKeys = data as DataType;
 

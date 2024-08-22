@@ -1,7 +1,7 @@
 "use client";
 
-import ProductCard from "../components/ProductCard";
-import { useShop } from "../context/ShopProvider";
+import ProductCard from "../../components/ProductCard";
+import { useShop } from "../../context/ShopProvider";
 
 export const Cart = () => {
   const { shopItems } = useShop();

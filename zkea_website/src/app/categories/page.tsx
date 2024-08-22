@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import BreadCumb from "@/app/components/Breadcrumb";
+import BreadCumb from "@/components/Breadcrumb";
 import DefaultLayout from "@/app/layout/DefaultLayout";
-import CategoryCard from "../components/CategoryCard";
+import CategoryCard from "../../components/CategoryCard";
 import { category } from "@/configs/category";
 
 export const metadata: Metadata = {

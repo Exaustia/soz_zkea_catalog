@@ -3,7 +3,7 @@ import { config } from "dotenv";
 import fs from "fs";
 
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { getAWSImgs, getAWSModels } from "./utils";
+import { getAWSImgs } from "../utils/utils";
 
 config();
 
@@ -21,10 +21,10 @@ export const uploadImg = async () => {
 
     const bucketName = "cdn.exaustia.com";
     const folderName = "soz/catalog/assets/images";
-    const modelsFolder = "../images";
+    const modelsFolder = "../../images";
 
     const files = fs.readdirSync(modelsFolder);
-    const filesToUpload = files.filter((file) => file.endsWith(".png"));
+    const filesToUpload = files.filter((file) => file.endsWith(".webp"));
 
     for (const file of filesToUpload) {
       if (currentImgs.includes(file)) {

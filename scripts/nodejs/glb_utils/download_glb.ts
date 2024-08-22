@@ -2,7 +2,7 @@ import fs from "fs";
 import https from "https";
 
 // import missingModels from "./missingModels.json";
-const missingModels = require("./missingModels.json");
+const missingModels = require("../json/missingModels.json");
 
 const downloadFile = (url: string, outputPath: string) => {
   const file = fs.createWriteStream(outputPath);
@@ -28,7 +28,7 @@ for (const model of missingModels) {
   try {
     downloadFile(
       "https://assets-gta.plebmasters.de/objects/g/models/" + model + ".glb",
-      "../models/" + model + ".glb"
+      "../../models/" + model + ".glb"
     );
   } catch (err) {
     console.error(err);

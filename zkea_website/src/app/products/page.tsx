@@ -1,5 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import BreadCumb from "@/app/components/Breadcrumb";
+import BreadCumb from "@/components/Breadcrumb";
 import DefaultLayout from "@/app/layout/DefaultLayout";
 
 type Props = {

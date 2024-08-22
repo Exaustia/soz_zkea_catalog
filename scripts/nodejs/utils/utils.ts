@@ -1,26 +1,15 @@
 import { config } from "dotenv";
-import data from "./data";
+import data from "../props/data";
 import fs from "fs";
-import https from "https";
 import {
-  ListBucketsCommand,
   ListObjectsV2Command,
   S3Client,
 } from "@aws-sdk/client-s3";
+import { Data } from "../types";
 
 config();
 
-export type Model = {
-  type: string;
-  name: string;
-  model: string;
-  price: number;
-  collision: boolean;
-};
 
-export type Data = {
-  [key: string]: Model;
-};
 
 const client = new S3Client({
   region: "us-east-1",
@@ -30,7 +19,7 @@ const client = new S3Client({
   },
 });
 
-export async function getAWSModels() {
+async function getAWSModels() {
   let nextToken = "firstloop";
   let firstLoop = true;
   const currentGlb: string[] = [];
@@ -58,7 +47,7 @@ export async function getAWSModels() {
   return currentGlb;
 }
 
-export async function getAWSImgs() {
+async function getAWSImgs() {
   let nextToken = "firstloop";
   let firstLoop = true;
   const currentGlb: string[] = [];
@@ -107,9 +96,8 @@ const makeFileToObject = () => {
   }
 
   const newFile = JSON.stringify(dataObj, null, 2);
-  fs.writeFileSync("./data.json", newFile);
+  fs.writeFileSync("../json/data.json", newFile);
 };
-
 
 const getAllFileButNotSoz = () => {
   const result = Object.values(data).map((e) => {
@@ -118,6 +106,30 @@ const getAllFileButNotSoz = () => {
     }
   });
 
-  fs.writeFileSync("./result.json", JSON.stringify(result));
+  fs.writeFileSync("../json/result.json", JSON.stringify(result));
 };
-getAllFileButNotSoz();
+
+const getAllMissingsFiles = async () => {
+  const models = await getAWSModels();
+  const images = await getAWSImgs();
+
+  const missingsModels = Object.values(data).filter(
+    (model) => !models.includes(model.model + ".glb")
+  );
+
+  const missingsImages = Object.values(data).filter(
+    (model) => !images.includes(model.model + ".png")
+  );
+
+  const modelsNames = missingsModels.map((model) => model.model);
+  const jsonFileModels = JSON.stringify(modelsNames);
+
+  fs.writeFileSync("../json/missingModels.json", jsonFileModels);
+
+  const imagesNames = missingsImages.map((model) => model.model);
+  const jsonFileImages = JSON.stringify(imagesNames);
+  fs.writeFileSync("../json/missingImages.json", jsonFileImages);
+};
+
+
+export { getAWSModels, getAWSImgs, makeFileToObject, getAllFileButNotSoz, getAllMissingsFiles };
