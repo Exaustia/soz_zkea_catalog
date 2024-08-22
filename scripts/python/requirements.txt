@@ -1,0 +1,2 @@
+trimesh
+Pillow
