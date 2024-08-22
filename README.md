@@ -19,17 +19,27 @@ To deploy the NextJS project, follow these steps:
 1. Build the project by running `npm run build` or `yarn build`.
 2. Deploy the generated `out` directory to your preferred hosting platform.
 
-## Contributing
-
-Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or submit a pull request.
-
-
 
 # Zkea Scripts
 
 ## Overview
 
 This project contains various utility functions used in the Zkea application.
+
+## Configure your bucket
+
+First, you need to configure you bucket S3 (or change if another) in the file `nodejs/utils/utils.ts`
+Make a .env with your own credential `AWS_ACCESS_KEY_ID` & `AWS_SECRET_ACCESS_KEY`
+
+```typescript
+const client = new S3Client({
+  region: "us-east-1",
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!!,
+  },
+});
+```
 
 ## Files utils
 
@@ -110,6 +120,7 @@ console.log(missingFiles);
 
 
 
+## Contributing
 
-
+Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or submit a pull request.
 
