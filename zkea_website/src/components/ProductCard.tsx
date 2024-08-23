@@ -9,6 +9,7 @@ import getUrl from "@/utils/url";
 import { findSlug } from "@/utils/findType";
 import classNames from "classnames";
 import { useShop } from "../context/ShopProvider";
+import c from "classnames";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -20,7 +21,13 @@ export interface productInterface {
   collision: boolean;
 }
 
-const ProductCard = ({ product }: { product: productInterface }) => {
+const ProductCard = ({
+  product,
+  selected,
+}: {
+  product: productInterface;
+  selected?: boolean;
+}) => {
   const { toggleView } = useMenu();
   const { addShopItem, removeShopItem, shopItems } = useShop();
   const [isHover, setIsHover] = useState(false);
@@ -30,10 +37,10 @@ const ProductCard = ({ product }: { product: productInterface }) => {
 
   return (
     <div
-      id={product.model}
-      className={
+      className={c(
+        { "border-2 border-red-800 shadow-2xl": selected },
         "relative rounded-sm cursor-pointer overflow-hidden hover:shadow-2xl transition-all h-72"
-      }
+      )}
     >
       <div className="relative w-full h-3/4">
         <button

@@ -27,6 +27,37 @@ export const Products = ({
   const pathname = usePathname();
 
   useEffect(() => {
+    const id = window.location.hash;
+    if (id) {
+      const element = document.querySelector(id);
+
+      if (element) {
+        // If the element is found immediately, scroll to it
+        element.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else {
+        // If the element is not found, observe DOM changes
+        const observer = new MutationObserver((mutationsList, observer) => {
+          const element = document.querySelector(id);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+            observer.disconnect(); // Stop observing once the element is found and scrolled to
+          }
+        });
+
+        // Start observing the document for changes
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        // Cleanup observer on component unmount
+        return () => {
+          observer.disconnect();
+        };
+      }
+    }
+  }, [productsOrder]); // Depend on productsOrder to ensure elements are rendered
+
+  // productsOrder as a dependency to ensure it runs after products are ordered and rendered
+
+  useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
         setShowBtnTop(true);
@@ -161,7 +192,12 @@ export const Products = ({
       )}
       <div className="grid grid-cols-1 small:grid-cols-2 mt-8 gap-8 sm:grid-cols-3 xl:grid-cols-4 m-auto">
         {productsOrder.map((product) => (
-          <ProductCard key={product.model} product={product} />
+          <div id={product.model} key={product.model}>
+            <ProductCard
+              product={product}
+              selected={window.location.hash === `#${product.model}`}
+            />
+          </div>
         ))}
         {products.length === 0 && (
           <div className="text-start text-black">Aucun produit trouvé</div>
