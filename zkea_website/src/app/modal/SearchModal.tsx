@@ -1,9 +1,9 @@
 import classNames from "classnames";
-import { useMenu } from "../context/MenuProvider";
+import { useMenu } from "../../context/MenuProvider";
 import { ChangeEvent, useEffect, useState } from "react";
-import useDebounce from "../hooks/searchHook";
+import useDebounce from "../../hooks/searchHook";
 import { searchProductByString } from "@/utils/searchProductByString";
-import { productInterface } from "../components/ProductCard";
+import { productInterface } from "../../components/ProductCard";
 import Link from "next/link";
 import { findSlug } from "@/utils/findType";
 

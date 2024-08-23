@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useMenu } from "../context/MenuProvider";
+import { useMenu } from "../../context/MenuProvider";
 import NavModal from "./NavModal";
 import SearchModal from "./SearchModal";
 import ViewModal from "./ViewModal";
@@ -29,7 +29,7 @@ const ModalProvider = () => {
     }
   }, [menuOpen, searchMenuOpen, viewOpen, pigeonOpen]);
   return (
-    <DefaultLayout>
+    <div>
       {menuOpen && <NavModal />}
       {viewOpen && <ViewModal />}
       {pigeonOpen && <PigeonModal />}
@@ -58,7 +58,7 @@ const ModalProvider = () => {
           onClick={() => toggleView("")}
         ></div>
       )}
-    </DefaultLayout>
+    </div>
   );
 };
 

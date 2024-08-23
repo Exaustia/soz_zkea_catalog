@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ClientLayout from "./layout";
 import Header from "./layout/Header";
 import { MenuProvider } from "../context/MenuProvider";
-import Modal from "../modal";
+import Modal from "./modal";
 import { ShopProvider } from "../context/ShopProvider";
 
 const inter = DM_Sans({ subsets: ["latin"] });

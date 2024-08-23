@@ -1,8 +1,8 @@
 "use client";
 import dynamic from "next/dynamic";
-import { useMenu } from "../context/MenuProvider";
+import { useMenu } from "../../context/MenuProvider";
 
-const ModelViewer = dynamic(() => import("../components/ModelViewer"), {
+const ModelViewer = dynamic(() => import("../../components/ModelViewer"), {
   ssr: false,
 });
 

@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useMenu } from "../context/MenuProvider";
+import { useMenu } from "../../context/MenuProvider";
 import { useEffect, useRef, useState } from "react";
 import { category } from "@/configs/category";
 import Link from "next/link";

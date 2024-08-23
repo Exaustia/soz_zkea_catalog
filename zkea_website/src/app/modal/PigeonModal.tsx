@@ -1,6 +1,6 @@
 "use client";
 
-import { useMenu } from "../context/MenuProvider";
+import { useMenu } from "../../context/MenuProvider";
 
 const PigeonModal = () => {
   const { setPigeonOpen } = useMenu();
