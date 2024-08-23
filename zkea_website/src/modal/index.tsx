@@ -6,6 +6,7 @@ import NavModal from "./NavModal";
 import SearchModal from "./SearchModal";
 import ViewModal from "./ViewModal";
 import PigeonModal from "./PigeonModal";
+import DefaultLayout from "@/app/layout/DefaultLayout";
 
 const ModalProvider = () => {
   const {
@@ -28,7 +29,7 @@ const ModalProvider = () => {
     }
   }, [menuOpen, searchMenuOpen, viewOpen, pigeonOpen]);
   return (
-    <div>
+    <DefaultLayout>
       {menuOpen && <NavModal />}
       {viewOpen && <ViewModal />}
       {pigeonOpen && <PigeonModal />}
@@ -57,7 +58,7 @@ const ModalProvider = () => {
           onClick={() => toggleView("")}
         ></div>
       )}
-    </div>
+    </DefaultLayout>
   );
 };
 
