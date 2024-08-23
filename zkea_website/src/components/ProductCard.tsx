@@ -38,7 +38,7 @@ const ProductCard = ({
   return (
     <div
       className={c(
-        { "border-2 border-red-800 shadow-2xl": selected },
+        { "border-2 border-red-800 shadow-2xl scale-105": selected },
         "relative rounded-sm cursor-pointer overflow-hidden hover:shadow-2xl transition-all h-72"
       )}
     >
