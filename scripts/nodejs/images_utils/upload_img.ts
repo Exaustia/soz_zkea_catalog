@@ -9,10 +9,10 @@ config();
 
 const client = new S3Client({
   region: "us-east-1",
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID!!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!!,
-  },
+  // credentials: {
+  //   accessKeyId: process.env.AWS_ACCESS_KEY_ID!!,
+  //   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!!,
+  // },
 });
 
 export const uploadImg = async () => {
@@ -21,9 +21,9 @@ export const uploadImg = async () => {
 
     const bucketName = "cdn.exaustia.com";
     const folderName = "soz/catalog/assets/images";
-    const modelsFolder = "../../images";
+    const webpFolder = "./webp";
 
-    const files = fs.readdirSync(modelsFolder);
+    const files = fs.readdirSync(webpFolder);
     const filesToUpload = files.filter((file) => file.endsWith(".webp"));
 
     for (const file of filesToUpload) {
@@ -32,7 +32,7 @@ export const uploadImg = async () => {
         continue;
       }
       console.log(`Uploading ${file}...`);
-      const filePath = `${modelsFolder}/${file}`;
+      const filePath = `${webpFolder}/${file}`;
       const fileStream = fs.createReadStream(filePath);
       await client.send(
         new PutObjectCommand({

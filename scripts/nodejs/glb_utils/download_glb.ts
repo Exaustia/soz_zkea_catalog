@@ -4,7 +4,7 @@ import https from "https";
 // import missingModels from "./missingModels.json";
 const missingModels = require("../json/missingModels.json");
 
-const downloadFile = (url: string, outputPath: string) => {
+const downloadFile = (url: string, outputPath: string, customSoz: boolean) => {
   const file = fs.createWriteStream(outputPath);
   https
     .get(url, (response) => {
@@ -24,11 +24,18 @@ const downloadFile = (url: string, outputPath: string) => {
     });
 };
 
-for (const model of missingModels) {
+for (let model of missingModels) {
+  let custom = false;
+  const modelName = model;
+  if (model.startsWith("soz_assets_")) {
+    model = model.replace("soz_assets_", "");
+    custom = true;
+  }
   try {
     downloadFile(
       "https://assets-gta.plebmasters.de/objects/g/models/" + model + ".glb",
-      "../../models/" + model + ".glb"
+      "../models/" + modelName + ".glb",
+      custom
     );
   } catch (err) {
     console.error(err);

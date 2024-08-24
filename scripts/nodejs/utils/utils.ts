@@ -1,22 +1,17 @@
 import { config } from "dotenv";
 import data from "../props/data";
 import fs from "fs";
-import {
-  ListObjectsV2Command,
-  S3Client,
-} from "@aws-sdk/client-s3";
+import { ListObjectsV2Command, S3Client } from "@aws-sdk/client-s3";
 import { Data } from "../types";
 
 config();
 
-
-
 const client = new S3Client({
   region: "us-east-1",
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID!!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!!,
-  },
+  // credentials: {
+  //   accessKeyId: process.env.AWS_ACCESS_KEY_ID!!,
+  //   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!!,
+  // },
 });
 
 async function getAWSModels() {
@@ -110,6 +105,12 @@ const getAllFileButNotSoz = () => {
 };
 
 const getAllMissingsFiles = async () => {
+  const isFileExist = fs.existsSync("../json/missingModels.json");
+  if (isFileExist) {
+    fs.unlinkSync("./json/missingModels.json");
+  } else {
+    fs.writeFileSync("./json/missingModels.json", "");
+  }
   const models = await getAWSModels();
   const images = await getAWSImgs();
 
@@ -118,18 +119,25 @@ const getAllMissingsFiles = async () => {
   );
 
   const missingsImages = Object.values(data).filter(
-    (model) => !images.includes(model.model + ".png")
+    (model) => !images.includes(model.model + ".webp")
   );
 
   const modelsNames = missingsModels.map((model) => model.model);
   const jsonFileModels = JSON.stringify(modelsNames);
 
-  fs.writeFileSync("../json/missingModels.json", jsonFileModels);
+  fs.writeFileSync("./json/missingModels.json", jsonFileModels);
 
   const imagesNames = missingsImages.map((model) => model.model);
   const jsonFileImages = JSON.stringify(imagesNames);
-  fs.writeFileSync("../json/missingImages.json", jsonFileImages);
+  fs.writeFileSync("./json/missingImages.json", jsonFileImages);
 };
 
+getAllMissingsFiles();
 
-export { getAWSModels, getAWSImgs, makeFileToObject, getAllFileButNotSoz, getAllMissingsFiles };
+export {
+  getAWSModels,
+  getAWSImgs,
+  makeFileToObject,
+  getAllFileButNotSoz,
+  getAllMissingsFiles,
+};

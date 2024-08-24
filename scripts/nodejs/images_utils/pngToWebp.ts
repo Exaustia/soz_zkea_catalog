@@ -11,7 +11,7 @@ async function readPngToBuffer(filePath: string): Promise<Buffer> {
 
 // Fonction pour convertir une image en WebP
 async function convertToWebP() {
-  const localFolder = "../allImagesPNG";
+  const localFolder = "../images";
 
   // Lire tous les fichiers du dossier local
   const files = fs.readdirSync(localFolder);
@@ -25,7 +25,7 @@ async function convertToWebP() {
       const webpBuffer = await sharp(fileStream).webp().toBuffer();
 
       // Sauvegarder le fichier converti localement (optionnel)
-      const outputFilePath = `../webp/${file.replace(/\.[^/.]+$/, ".webp")}`;
+      const outputFilePath = `./webp/${file.replace(/\.[^/.]+$/, ".webp")}`;
       fs.writeFileSync(outputFilePath, webpBuffer);
 
       console.log(`Image convertie : ${file} -> ${outputFilePath}`);
