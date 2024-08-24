@@ -141,4 +141,5 @@ export {
   makeFileToObject,
   getAllFileButNotSoz,
   getAllMissingsFiles,
+  client,
 };

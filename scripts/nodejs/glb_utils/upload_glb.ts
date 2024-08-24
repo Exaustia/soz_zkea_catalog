@@ -3,17 +3,10 @@ import { config } from "dotenv";
 import fs from "fs";
 
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { getAWSImgs, getAWSModels } from "../utils/utils";
+import { client, getAWSImgs, getAWSModels } from "../utils/utils";
 
 config();
 
-const client = new S3Client({
-  region: "us-east-1",
-  // credentials: {
-  //   accessKeyId: process.env.AWS_ACCESS_KEY_ID!!,
-  //   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!!,
-  // },
-});
 
 export const uploadImg = async () => {
   try {
