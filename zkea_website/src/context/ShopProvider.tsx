@@ -22,23 +22,23 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
   const [shopItems, setShopItems] = useState<productInterface[]>([]);
 
   // Uncomment this block to use local storage
-  // useEffect(() => {
-  //   const localShopItems = getLocalStorage("soz_shopItems");
-  //   if (localShopItems.length > 0) {
-  //     setShopItems(localShopItems);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const localShopItems = getLocalStorage("soz_shopItems");
+    if (localShopItems.length > 0) {
+      setShopItems(localShopItems);
+    }
+  }, []);
 
   const addShopItem = (item: productInterface) => {
-    // setLocalStorage("soz_shopItems", [...shopItems, item]);
+    setLocalStorage("soz_shopItems", [...shopItems, item]);
     setShopItems([...shopItems, item]);
   };
 
   const removeShopItem = (item: productInterface) => {
-    // setLocalStorage(
-    //   "soz_shopItems",
-    //   shopItems.filter((shopItem) => shopItem !== item)
-    // );
+    setLocalStorage(
+      "soz_shopItems",
+      shopItems.filter((shopItem) => shopItem !== item)
+    );
     setShopItems(shopItems.filter((shopItem) => shopItem !== item));
   };
 
