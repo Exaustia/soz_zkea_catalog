@@ -1,5 +1,6 @@
 import { config } from "dotenv";
-import data from "../props/data";
+import data from "../json/data.json";
+
 import fs from "fs";
 import { ListObjectsV2Command, S3Client } from "@aws-sdk/client-s3";
 import { Data } from "../types";

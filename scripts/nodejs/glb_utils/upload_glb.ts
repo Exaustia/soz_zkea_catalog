@@ -28,7 +28,6 @@ export const uploadImg = async () => {
 
     for (const file of filesToUpload) {
       if (currentImgs.includes(file)) {
-        console.log(`File ${file} already exists in the bucket`);
         continue;
       }
       console.log(`Uploading ${file}...`);
@@ -60,7 +59,6 @@ export const uploadGLB = async () => {
 
     for (const file of filesToUpload) {
       if (currentModels.includes(file)) {
-        console.log(`File ${file} already exists in the bucket`);
         continue;
       }
       console.log(`Uploading ${file}...`);

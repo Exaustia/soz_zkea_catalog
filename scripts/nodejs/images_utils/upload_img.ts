@@ -28,7 +28,6 @@ export const uploadImg = async () => {
 
     for (const file of filesToUpload) {
       if (currentImgs.includes(file)) {
-        console.log(`File ${file} already exists in the bucket`);
         continue;
       }
       console.log(`Uploading ${file}...`);

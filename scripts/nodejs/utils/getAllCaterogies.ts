@@ -1,6 +1,6 @@
-import data from "../props/data";
-import { DataType } from "../types";
+import data from "../json/data.json";
 
+import { DataType } from "../types";
 
 const dataKeys = data as DataType;
 

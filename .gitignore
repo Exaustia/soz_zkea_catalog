@@ -44,4 +44,4 @@ next-env.d.ts
 scripts/images/*
 scripts/models/*
 scripts/allImagesPNG
-scripts/webp
+scripts/webp/*.webp

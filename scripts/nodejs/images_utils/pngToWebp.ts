@@ -25,7 +25,7 @@ async function convertToWebP() {
       const webpBuffer = await sharp(fileStream).webp().toBuffer();
 
       // Sauvegarder le fichier converti localement (optionnel)
-      const outputFilePath = `./webp/${file.replace(/\.[^/.]+$/, ".webp")}`;
+      const outputFilePath = `../webp/${file.replace(/\.[^/.]+$/, ".webp")}`;
       fs.writeFileSync(outputFilePath, webpBuffer);
 
       console.log(`Image convertie : ${file} -> ${outputFilePath}`);
