@@ -27,7 +27,7 @@ const MenuCategory = () => {
       >
         <button
           onClick={() => handleScroll("left")}
-          className="absolute left-0 h-7 w-7 bg-gray-900 top-0 bottom-0 m-auto rounded-full opacity-0 flex items-center justify-center transition-all"
+          className="absolute left-0 h-7 w-7 border-[1px] border-black bg-white top-0 bottom-0 m-auto rounded-full opacity-0 flex items-center justify-center transition-all"
         >
           {"<"}
         </button>
@@ -49,7 +49,7 @@ const MenuCategory = () => {
         ))}
         <button
           onClick={() => handleScroll("right")}
-          className="absolute right-0 h-7 w-7 bg-gray-900 top-0 bottom-0 m-auto rounded-full opacity-0 flex items-center justify-center  transition-all"
+          className="absolute right-0 h-7 w-7 bg-white  border-[1px] border-black top-0 bottom-0 m-auto rounded-full opacity-0 flex items-center justify-center  transition-all"
         >
           {">"}
         </button>
