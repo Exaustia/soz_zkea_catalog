@@ -10,7 +10,7 @@ import ProductCard, { productInterface } from "../components/ProductCard";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const { setPigeonOpen } = useMenu();
+  const { setFamilyOpen } = useMenu();
   const [products, setProducts] = useState<productInterface[]>();
 
   useEffect(() => {
@@ -68,7 +68,7 @@ export default function Home() {
             </span>
             <button
               className="bg-white text-black px-4 py-1 rounded-lg w-fit text-xs font-semibold"
-              onClick={() => setPigeonOpen(true)}
+              onClick={() => setFamilyOpen(true)}
             >
               Devenez membre ZKEA Family, c&apos;est rapide et ça ne coute que
               1999$!
