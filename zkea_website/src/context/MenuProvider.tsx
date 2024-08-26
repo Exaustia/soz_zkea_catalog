@@ -13,8 +13,8 @@ interface MenuContextProps {
   toggleMenu: () => void;
   toggleSearchMenu: () => void;
   toggleView: (elm: string) => void;
-  pigeonOpen: boolean;
-  setPigeonOpen: (value: boolean) => void;
+  familyOpen: boolean;
+  setFamilyOpen: (value: boolean) => void;
   elm: string;
 }
 
@@ -24,7 +24,7 @@ export const MenuProvider = ({ children }: { children: ReactNode }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchMenuOpen, setSearchMenuOpen] = useState(false);
   const [viewOpen, setViewOpen] = useState(false);
-  const [pigeonOpen, setPigeonOpen] = useState(false);
+  const [familyOpen, setFamilyOpen] = useState(false);
   const [elm, setElm] = useState("");
 
   const toggleMenu = () => {
@@ -45,8 +45,8 @@ export const MenuProvider = ({ children }: { children: ReactNode }) => {
       value={{
         elm,
         menuOpen,
-        pigeonOpen,
-        setPigeonOpen,
+        familyOpen,
+        setFamilyOpen,
         toggleMenu,
         searchMenuOpen,
         toggleSearchMenu,
