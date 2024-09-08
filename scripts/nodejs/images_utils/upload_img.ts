@@ -13,7 +13,7 @@ export const uploadImg = async () => {
 
     const bucketName = "cdn.exaustia.com";
     const folderName = "soz/catalog/assets/images";
-    const webpFolder = "./webp";
+    const webpFolder = "../webp";
 
     const files = fs.readdirSync(webpFolder);
     const filesToUpload = files.filter((file) => file.endsWith(".webp"));
@@ -38,4 +38,4 @@ export const uploadImg = async () => {
   }
 };
 
-uploadImg();
+

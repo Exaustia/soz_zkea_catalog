@@ -1,10 +1,10 @@
 import { config } from "dotenv";
-import data from "../json/data.json";
 
 import fs from "fs";
 import { ListObjectsV2Command, S3Client } from "@aws-sdk/client-s3";
 import { Data } from "../types";
 
+const data = require("../json/data.json");
 config();
 
 const client = new S3Client({
@@ -92,21 +92,21 @@ const makeFileToObject = () => {
   }
 
   const newFile = JSON.stringify(dataObj, null, 2);
-  fs.writeFileSync("../json/data.json", newFile);
+  fs.writeFileSync("./json/data.json", newFile);
 };
 
 const getAllFileButNotSoz = () => {
-  const result = Object.values(data).map((e) => {
+  const result = Object.values(data).map((e: any) => {
     if (!e.model.startsWith("soz_") || !e.model.startsWith("soz")) {
       return e.model;
     }
   });
 
-  fs.writeFileSync("../json/result.json", JSON.stringify(result));
+  fs.writeFileSync("./json/result.json", JSON.stringify(result));
 };
 
 const getAllMissingsFiles = async () => {
-  const isFileExist = fs.existsSync("../json/missingModels.json");
+  const isFileExist = fs.existsSync("./json/missingModels.json");
   if (isFileExist) {
     fs.unlinkSync("./json/missingModels.json");
   } else {
@@ -116,19 +116,19 @@ const getAllMissingsFiles = async () => {
   const images = await getAWSImgs();
 
   const missingsModels = Object.values(data).filter(
-    (model) => !models.includes(model.model + ".glb")
+    (model: any) => !models.includes(model.model + ".glb")
   );
 
   const missingsImages = Object.values(data).filter(
-    (model) => !images.includes(model.model + ".webp")
+    (model: any) => !images.includes(model.model + ".webp")
   );
 
-  const modelsNames = missingsModels.map((model) => model.model);
+  const modelsNames = missingsModels.map((model: any) => model.model);
   const jsonFileModels = JSON.stringify(modelsNames);
 
   fs.writeFileSync("./json/missingModels.json", jsonFileModels);
 
-  const imagesNames = missingsImages.map((model) => model.model);
+  const imagesNames = missingsImages.map((model: any) => model.model);
   const jsonFileImages = JSON.stringify(imagesNames);
   fs.writeFileSync("./json/missingImages.json", jsonFileImages);
 };

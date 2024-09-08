@@ -2,7 +2,6 @@ import sharp from "sharp";
 import { config } from "dotenv";
 import fs from "fs";
 
-
 config();
 
 async function readPngToBuffer(filePath: string): Promise<Buffer> {
@@ -35,5 +34,4 @@ async function convertToWebP() {
   }
 }
 
-// Lancer le script
-convertToWebP();
+export { convertToWebP };

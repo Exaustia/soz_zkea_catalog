@@ -4,7 +4,11 @@ import https from "https";
 // import missingModels from "./missingModels.json";
 const missingModels = require("../json/missingModels.json");
 
-const downloadFile = (url: string, outputPath: string, customSoz: boolean) => {
+const downloadFile = async (
+  url: string,
+  outputPath: string,
+  customSoz: boolean
+) => {
   const file = fs.createWriteStream(outputPath);
   https
     .get(url, (response) => {
@@ -24,21 +28,28 @@ const downloadFile = (url: string, outputPath: string, customSoz: boolean) => {
     });
 };
 
-for (let model of missingModels) {
-  let custom = false;
-  const modelName = model;
-  if (model.startsWith("soz_assets_")) {
-    model = model.replace("soz_assets_", "");
-    custom = true;
+const downloadGLB = async () => {
+  for (let model of missingModels) {
+    let custom = false;
+    const modelName = model;
+    if (model.startsWith("soz_assets_")) {
+      model = model.replace("soz_assets_", "");
+      custom = true;
+    }
+    try {
+      await downloadFile(
+        "https://assets-gta.plebmasters.de/objects/g/models/" + model + ".glb",
+        "../models/" + modelName + ".glb",
+        custom
+      );
+    } catch (err) {
+      console.error(err);
+      continue;
+    }
   }
-  try {
-    downloadFile(
-      "https://assets-gta.plebmasters.de/objects/g/models/" + model + ".glb",
-      "../models/" + modelName + ".glb",
-      custom
-    );
-  } catch (err) {
-    console.error(err);
-    continue;
-  }
-}
+
+  console.log("All missing models have been downloaded.");
+  return true;
+};
+
+export { downloadGLB };
