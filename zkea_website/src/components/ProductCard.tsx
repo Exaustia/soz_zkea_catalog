@@ -77,7 +77,7 @@ const ProductCard = ({
             {product.name}
           </span>
           <span className="text-sm font-semibold text-secondary">
-            {product.price}$
+            {product.price * 0.16}$
           </span>
         </div>
         <div className="flex flex-col relative cursor-pointer">
