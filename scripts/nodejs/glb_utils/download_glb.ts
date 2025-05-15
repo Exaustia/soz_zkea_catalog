@@ -4,8 +4,6 @@ import https from "https";
 // import missingModels from "./missingModels.json";
 const missingModels = require("../json/missingModels.json");
 
-
-
 const downloadFile = async (
   url: string,
   outputPath: string,
