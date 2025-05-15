@@ -1,8 +1,6 @@
 import fs from "fs";
 import https from "https";
 
-
-
 // import missingModels from "./missingModels.json";
 const missingModels = require("../json/missingModels.json");
 
