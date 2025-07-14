@@ -20,6 +20,7 @@ export const uploadImg = async () => {
 
     for (const file of filesToUpload) {
       if (currentImgs.includes(file)) {
+        console.log(`Skipping ${file}...`);
         continue;
       }
       console.log(`Uploading ${file}...`);
